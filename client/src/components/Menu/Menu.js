@@ -68,7 +68,7 @@ class Menu extends React.Component {
               className={s.signout}
               onClick={signoutUser}
             >
-              Sign out
+              Enter
             </Button>
           )}
         </div>

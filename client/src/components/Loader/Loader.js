@@ -1,14 +1,18 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Spinner } from 'react-bootstrap';
-import s from './Loader.scss';
+import styles from './Loader.scss';
 
 const Loader = () => (
-  <div className={s.overlay}>
-    <div className={s.spinner}>
-      <Spinner animation="grow" variant="primary" className={s.spinnerStyle} />
+  <div className={styles.overlay}>
+    <div className={styles.spinner}>
+      <Spinner
+        animation="grow"
+        variant="primary"
+        className={styles.spinnerStyle}
+      />
     </div>
   </div>
 );
 
-export default withStyles(s)(Loader);
+export default withStyles(styles)(Loader);
