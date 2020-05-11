@@ -226,13 +226,12 @@ textarea {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0 105px;
+  padding: 0 60px;
   background-color: #3f426b;
   height: 60px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  align-items: left;
 }
 
 .logo {
@@ -251,6 +250,7 @@ textarea {
 }
 
 .logoName {
-  font-size: 30px;
+  font-size: 25px;
   color: $color-header-text;
+  font-family: 'Times New Roman', Times, serif;
 }

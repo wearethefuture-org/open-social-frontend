@@ -19,10 +19,20 @@ function Layout(props) {
           <div className={s.header}>
             <Link to="/">
               <div className={s.logo}>
-                <div className={s.logoImg}>
+                <div
+                  className={[s.logoImg, 'd-flex justify-content-start'].join(
+                    ' ',
+                  )}
+                >
                   <img src={logo} alt="logo" />
                 </div>
-                <div className={s.logoName}>Open Social Network</div>
+                <div
+                  className={[s.logoName, 'd-flex justify-content-end'].join(
+                    ' ',
+                  )}
+                >
+                  Open Social Network
+                </div>
               </div>
             </Link>
           </div>

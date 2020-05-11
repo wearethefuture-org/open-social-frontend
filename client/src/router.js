@@ -12,6 +12,7 @@ const router = new UniversalRouter(routes, {
     if (typeof context.route.action === 'function') {
       return context.route.action(context, parameters);
     }
+
     return undefined;
   },
 });
