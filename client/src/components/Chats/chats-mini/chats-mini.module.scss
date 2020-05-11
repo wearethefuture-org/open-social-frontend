@@ -1,0 +1,46 @@
+.miniDialogsWindow {
+  color: black;
+  width: 400px;
+  border: 2px solid skyblue;
+  background-color: whitesmoke;
+  border-radius: 30px;
+  padding: 10px;
+  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  right: 10px;
+  top: 250%;
+}
+
+.miniDialogs {
+  height: 40px;
+}
+
+.buttonCloseWindowMiniChat {
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  margin: 10px;
+
+  :hover {
+    background-color: lightgrey;
+  }
+
+  :active {
+    background-color: grey;
+  }
+}
+
+.buttonBackToChatUsers {
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+  float: left;
+
+  :hover {
+    background-color: lightgrey;
+  }
+
+  :active {
+    background-color: grey;
+  }
+}

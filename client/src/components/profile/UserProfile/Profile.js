@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Row, Col, Card, Container } from 'react-bootstrap';
-import styles from './ProfileContainer.scss';
+import styles from './Profile.scss';
 import stylesButton from './ProfileButton.scss';
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 
-class ProfileContainer extends Component {
+class Profile extends Component {
   state = {
     isDefaultPhotoDisplayed: true,
     isPhotoLoaded: false,
@@ -108,5 +108,6 @@ class ProfileContainer extends Component {
   }
 }
 
-ProfileContainer.whyDidYouRender = true;
-export default withStyles(styles, stylesButton)(React.memo(ProfileContainer));
+Profile.whyDidYouRender = true;
+
+export default withStyles(styles, stylesButton)(React.memo(Profile));

@@ -17,6 +17,11 @@
 }
 
 @media (max-width: 768px) {
+  .TabsWrapper {
+    padding-top: 0.5em;
+    margin-left: 0.5em !important;
+  }
+
   ul[class*=tab-list] {
     width: 22em;
     font-size: 14px;
@@ -124,7 +129,6 @@
 
   li[aria-selected*=true] {
     background-color: lightgray;
-
 
     &::after {
       content: '';

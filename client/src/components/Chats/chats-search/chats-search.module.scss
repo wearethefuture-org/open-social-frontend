@@ -1,0 +1,14 @@
+.SearchDialogs {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.SearchInputDialog {
+  border: 2px solid rgb(172, 172, 172);
+  border-radius: 10px;
+  height: 30px;
+  outline: none;
+}

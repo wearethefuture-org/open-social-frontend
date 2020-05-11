@@ -6,13 +6,11 @@ import Col from 'react-bootstrap/Col';
 import Link from '../Link/Link';
 import s from './Home.scss';
 import message from '../../assets/message.jpg';
-import ProfileContainer from './UserProfile/ProfileContainer';
 
 class Home extends PureComponent {
   render() {
     return (
       <div className={s.root}>
-        <ProfileContainer />
         <div className={s.container}>Users information</div>
         <Container>
           <Row>

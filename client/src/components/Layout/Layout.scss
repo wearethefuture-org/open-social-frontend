@@ -228,7 +228,7 @@ textarea {
   width: 100%;
   padding: 0 60px;
   background-color: #3f426b;
-  height: 60px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -237,6 +237,7 @@ textarea {
 .logo {
   display: flex;
   align-items: center;
+  width: auto;
   z-index: 50;
 }
 
@@ -253,4 +254,35 @@ textarea {
   font-size: 25px;
   color: $color-header-text;
   font-family: 'Times New Roman', Times, serif;
+}
+
+@media (max-width: 440px) {
+  .logoName {
+    display: none;
+  }
+}
+
+.linkHeader {
+  display: inline-block;
+}
+
+.chatButton {
+  width: 70px;
+  height: 45px;
+  margin-right: 15px;
+  background-color: whitesmoke;
+  text-align: center;
+  justify-content: center;
+  border-radius: 30px;
+
+  button:active,
+  button:focus {
+    outline: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .chatButton {
+    display: none;
+  }
 }

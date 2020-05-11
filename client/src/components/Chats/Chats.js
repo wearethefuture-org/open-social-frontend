@@ -1,15 +1,22 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './Chats.scss';
+import ChatsDialogs from './chats-dialogs/chats-dialogs';
+import ChatsNav from './chats-nav/chats-nav';
 
-class About extends PureComponent {
-  render() {
-    return (
-      <div className={s.root}>
-        <div className={s.container}>Hello World</div>
+const Chats = () => {
+  return (
+    <div className={s.container}>
+      <div className={s.chatsHeader}>
+        <h1>Messages</h1>
       </div>
-    );
-  }
-}
-About.whyDidYouRender = true;
-export default withStyles(s)(React.memo(About));
+      <div className={s.mainNav}>
+        <ChatsNav />
+      </div>
+      <ChatsDialogs />
+    </div>
+  );
+};
+
+Chats.whyDidYouRender = true;
+export default withStyles(s)(React.memo(Chats));

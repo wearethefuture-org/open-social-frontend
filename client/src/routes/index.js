@@ -1,7 +1,9 @@
 import isomorphicCookie from 'isomorphic-cookie';
 import React from 'react';
 
-const Confirm = import(/* webpackChunkName: 'confirm' */ '../components/confirm');
+const Confirm = import(
+  /* webpackChunkName: 'confirm' */ '../components/confirm'
+);
 const routes = [
   {
     action({ next }) {
@@ -21,10 +23,10 @@ const routes = [
     path: '/signup',
   },
   {
-    load: () => import(/* webpackChunkName: 'confirm' */ '../components/confirm'),
+    load: () =>
+      import(/* webpackChunkName: 'confirm' */ '../components/confirm'),
     path: '/auth/confirm',
     // action : (props) => <Confirm {...props} />
-
   },
   {
     async action({ next, token }) {
@@ -53,7 +55,7 @@ const routes = [
       },
       {
         load: () =>
-          import(/* webpackChunkName: 'about' */ '../components/Chats'),
+          import(/* webpackChunkName: 'chats' */ '../components/Chats'),
         path: '/chats',
       },
       {
@@ -76,8 +78,6 @@ const routes = [
 // }
 
 export default routes;
-
-
 
 // /* eslint-disable global-require */
 // import isomorphicCookie from 'isomorphic-cookie';
