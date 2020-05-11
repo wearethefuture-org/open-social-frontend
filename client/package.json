@@ -6,8 +6,25 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": ">=6.13.1",
+    "node": ">=10.0",
     "npm": ">=3.10.10"
+  },
+  "scripts": {
+    "start": "babel-node scripts/run start",
+    "lint-js": "eslint --ignore-pattern \"!**/.*\" .",
+    "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\"",
+    "lint": "yarn run lint-js && yarn run lint-css",
+    "fix-js": "yarn run lint-js --fix",
+    "fix-css": "yarn run lint-css --fix",
+    "fix": "yarn run fix-js && yarn run fix-css",
+    "clean": "babel-node scripts/run clean",
+    "copy": "babel-node scripts/run copy",
+    "bundle": "babel-node scripts/run bundle",
+    "build": "babel-node scripts/run build",
+    "build-stats": "yarn run build --release --analyse",
+    "deploy": "babel-node scripts/run deploy",
+    "render": "babel-node scripts/run render",
+    "serve": "babel-node scripts/run run-server"
   },
   "browserslist": [
     ">1%",
@@ -130,22 +147,5 @@
     "webpack-dev-middleware": "~3.7.0",
     "webpack-hot-middleware": "~2.25.0",
     "webpack-node-externals": "~1.7.2"
-  },
-  "scripts": {
-    "lint-js": "eslint --ignore-pattern \"!**/.*\" .",
-    "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\"",
-    "lint": "yarn run lint-js && yarn run lint-css",
-    "fix-js": "yarn run lint-js --fix",
-    "fix-css": "yarn run lint-css --fix",
-    "fix": "yarn run fix-js && yarn run fix-css",
-    "clean": "babel-node scripts/run clean",
-    "copy": "babel-node scripts/run copy",
-    "bundle": "babel-node scripts/run bundle",
-    "build": "babel-node scripts/run build",
-    "build-stats": "yarn run build --release --analyse",
-    "deploy": "babel-node scripts/run deploy",
-    "render": "babel-node scripts/run render",
-    "serve": "babel-node scripts/run run-server",
-    "start": "babel-node scripts/run start"
   }
 }
