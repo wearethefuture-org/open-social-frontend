@@ -5,8 +5,6 @@ import normalizeCss from 'normalize.css';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import isomorphicCookie from 'isomorphic-cookie';
-
 import Link from '../Link';
 import Menu from '../Menu';
 import logo from '../../assets/logo.png';
@@ -30,12 +28,9 @@ function Layout(props) {
                 </div>
               </Link>
             </div>
-            {isomorphicCookie.load('token') && (
-              <div className={s.chatButton}>
-                <ChatsMini />
-              </div>
-            )}
-
+            <div className={s.chatButton}>
+              <ChatsMini />
+            </div>
           </div>
         </Col>
       </Row>
