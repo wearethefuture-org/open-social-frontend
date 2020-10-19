@@ -53,7 +53,7 @@ export const login = ({ email, password }) => dispatch => {
     .catch(error => {
       const { response } = error;
       if (response) {
-        dispatch(setUserMessage(response.data));
+        dispatch(setUserMessage(response.data.message));
       }
       return error.toJSON();
     });

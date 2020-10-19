@@ -19,13 +19,18 @@ class LoginPage extends React.Component {
   };
 
   handleSubmit = async data => {
-    const { setUser } = this.props;
-    await setUser(data);
-    history.push('/');
+    try {
+      const { setUser } = this.props;
+      await setUser(data);
+      history.push('/');
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   render() {
     const { message } = this.props;
+
     return (
       <div className={s.form}>
         {message && <Alert variant="info">{message}</Alert>}
