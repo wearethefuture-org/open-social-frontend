@@ -1,19 +1,19 @@
-.wrapper {
-  margin: 0 auto;
-}
-
 .UsersAvatar {
-  height: 100px;
-  width: 100px;
+  object-fit: cover;
+  height: 82px;
+  width: 82px;
   border-radius: 60px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .UsersAvatarDefault {
-  height: 90px;
-  width: 145px;
+  object-fit: cover;
+  height: 82px;
+  width: 82px;
   border-radius: 60px;
+}
+
+.UsersName {
+  margin-left: 30px;
 }
 
 .userContainer {
@@ -29,12 +29,13 @@
   min-width: 70px;
   font-size: 12pt;
   padding: 4px;
+  display: none;
 }
 
 .buttonAddWrite {
-  padding-top: 23px;
   text-align: center;
   justify-content: center;
+  align-items: center;
   display: flex;
 }
 
@@ -45,7 +46,7 @@
 
 .line {
   width: 100%;
-  color: lightgrey;
+  background-color: #f4f4f4;
   height: 1px;
-  margin: 10px;
+  margin: 10px 0;
 }

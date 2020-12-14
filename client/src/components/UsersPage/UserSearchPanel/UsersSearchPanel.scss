@@ -1,17 +1,13 @@
-.searchPanelDiv {
-	//display: inline-block;
-	width: 200px;
-	height: 33px;
-}
 .searchPanelInput {
-	outline: none;
-	background-color: white;
-	font-style: inherit;
-	padding: 6px 7px;
-	border: 1px solid #ccc;
-	border-radius: 10px;
+  outline: none;
+  background-color: white;
+  font-style: inherit;
+  padding: 6px 7px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
+
 .searchPanelInput:focus {
-	background-color: #ccc;
-	outline: none;
+  background-color: #ccc;
+  outline: none;
 }

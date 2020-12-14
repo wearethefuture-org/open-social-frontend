@@ -1,18 +1,23 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
 import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
 import OwnChatButton from '../../profile/UserProfile/OwnChat';
 import { setUserData } from '../../../actions/profile';
-import textData from '../../../utils/lib/languages';
+import textData from '../../../utils/lib/languages.json';
 
 class User extends React.Component {
-  toUserProfile = id => {
-    this.props.setUserData({ id });
+  static propTypes = {
+    lang: PropTypes.string.isRequired,
+    setUserData: PropTypes.func.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    user: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -20,6 +25,7 @@ class User extends React.Component {
   }
 
   componentWillUnmount() {
+    // eslint-disable-next-line react/destructuring-assignment
     this.props.setUserData({ id: null });
   }
 
@@ -47,16 +53,16 @@ class User extends React.Component {
                   alt={UsersAvatar}
                 />
               )}
-              <span>
+              <span className={s.UsersName}>
                 {firstName} {lastName}
               </span>
             </Link>
           </div>
           <div className={s.buttonAddWrite}>
             <div>
-              <button className={s.buttonAdd}>
+              <button type="button" className={s.buttonAdd}>
                 {usersPage.addButton[lang]}
-                 <AddIcon className={s.buttonAddPlus} />
+                <AddIcon />
               </button>
             </div>
             <div>
@@ -67,8 +73,13 @@ class User extends React.Component {
         <hr className={s.line} />
       </>
     );
+  }
+
+  toUserProfile = id => {
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.setUserData({ id });
   };
-};
+}
 
 User.whyDidYouRender = true;
 export default connect(
