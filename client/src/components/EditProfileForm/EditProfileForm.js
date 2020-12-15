@@ -15,6 +15,7 @@ import apiClient from '../../utils/axios-with-auth';
 const EditProfileForm = ({ handleSubmit, submitText }) => {
   return (
     <Form onSubmit={handleSubmit}>
+      <div className="formInput">
       <Form.Group as={Row}>
         <Form.Label column={4}>First name:</Form.Label>
         <Col sm={8}>
@@ -60,6 +61,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
           </InputGroup>
         </Col>
       </Form.Group>
+      <br />
       <Form.Group as={Row}>
         <Form.Label column={4}>Email</Form.Label>
         <Col sm={8}>
@@ -86,6 +88,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
           />
         </Col>
       </Form.Group>
+      </ div>
       <div className={s.buttonClose}>
         <Link to={`/profile${apiClient.userId()}`}>
           <Button variant="cancel">Cancel</Button>
