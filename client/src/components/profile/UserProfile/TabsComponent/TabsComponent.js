@@ -24,7 +24,7 @@ const TabsComponent = ({
   privateUser,
 }) => {
   const lang = useSelector(store => store.menu.lang);
-  //if id != our id AND privateUser on this user === true return false else true
+  // if id != our id AND privateUser on this user === true return false else true
   const privateStatus = !(id !== apiClient.userId() && privateUser === true);
   const {
     profilePage: { tabs, aboutData },
@@ -105,21 +105,29 @@ TabsComponent.propTypes = {
   firstName: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   lastName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
   privateUser: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
 };
 
 TabsComponent.whyDidYouRender = true;
 export default connect(
   ({
-    userProfile: { firstName, lastName, userName, email, birthdayDate, id, privateUser },
+    userProfile: {
+      firstName,
+      lastName,
+      userName,
+      email,
+      birthdayDate,
+      id,
+      privateUser,
+    },
   }) => ({
     birthdayDate,
     email,
     firstName,
     id,
     lastName,
-    userName,
     privateUser,
+    userName,
   }),
 )(withStyles(styles, reactStyle)(React.memo(TabsComponent)));
