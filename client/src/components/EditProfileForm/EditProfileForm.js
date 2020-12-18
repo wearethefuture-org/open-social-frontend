@@ -73,19 +73,6 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
           />
         </Col>
       </Form.Group>
-      <Form.Group as={Row}>
-        <Form.Label column={4}>Birth Date</Form.Label>
-        <Col sm={8}>
-          <Field
-            name="birthdayDate"
-            component={FieldInput}
-            type="date"
-            placeholder="Enter your birthdayDate"
-            description="Birthday date"
-            validate={VALIDATION_RULES.BIRTH_DAY}
-          />
-        </Col>
-      </Form.Group>
       <div className={s.buttonClose}>
         <Link to={`/profile${apiClient.userId()}`}>
           <Button variant="cancel">Cancel</Button>
