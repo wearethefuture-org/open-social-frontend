@@ -25,7 +25,7 @@ const TabsComponent = ({
 }) => {
   const lang = useSelector(store => store.menu.lang);
   // if id != our id AND privateUser on this user === true return false else true
-  const privateStatus = !(id !== apiClient.userId() && privateUser === true);
+  const publicStatus = (!privateUser || id === apiClient.userId());
   const {
     profilePage: { tabs, aboutData },
   } = textData;
@@ -40,10 +40,10 @@ const TabsComponent = ({
     ],
   };
 
-  if (privateStatus) {
+
+  if (publicStatus) {
     return (
       <>
-        {privateStatus}
         <Tabs className={styles.TabsWrapper}>
           <TabList>
             <div>
