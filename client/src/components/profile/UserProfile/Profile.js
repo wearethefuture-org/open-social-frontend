@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line no-unused-vars
 import { faCaretDown, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// eslint-disable-next-line css-modules/no-unused-class
 import styles from './Profile.scss';
-import stylesButton from './ProfileButton.scss';
+// eslint-disable-next-line css-modules/no-unused-class
+import stylesButton from './ProfileButton/ProfileButton.scss';
+// eslint-disable-next-line no-unused-vars
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
-import OwnChatButton from './OwnChat';
+import OwnChatButton from './OwnChat/OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
 import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
 import textData from '../../../utils/lib/languages.json';
@@ -27,20 +32,7 @@ class Profile extends Component {
     id: PropTypes.shape({
       id: PropTypes.number,
     }).isRequired,
-  };
-
-  getUserAvatar() {
-    const { avatar } = this.props.avatar;
-    if (avatar == null) {
-      return defaultUserPhoto;
-    }
-    return avatar.url;
-  }
-
-  loadPhoto = event => {
-    const photo = event.target.files[0];
-    apiClient.saveUserProfilePhoto(photo);
-    history.push(`/`);
+    lang: PropTypes.string.isRequired,
   };
 
   render() {
@@ -59,7 +51,7 @@ class Profile extends Component {
                 loadPhoto={this.loadPhoto}
               />
               <div>
-           {/*     <ProfileButton
+                {/*     <ProfileButton
                   className={stylesButton.ProfileButton}
                   name={profilePage.buttons.connect[lang]}
                 />
@@ -82,9 +74,9 @@ class Profile extends Component {
                       icon={faCaretDown}
                     />
                   }
-                />*/}
+                /> */}
                 {id === apiClient.userId() && (
-                  <OwnChatButton nameBtn={profilePage.buttons.chat[lang]} />
+                  <OwnChatButton nameButton={profilePage.buttons.chat[lang]} />
                 )}
               </div>
             </Col>
@@ -94,7 +86,7 @@ class Profile extends Component {
           </Row>
         </Card>
 
-  {/*      <Container className={styles.FollowersContainer}>
+        {/*      <Container className={styles.FollowersContainer}>
           <Card className={styles.CardBody}>
             <Row className={styles.RowContainer}>
               <Col lg={4} md={4} sm={12}>
@@ -113,10 +105,25 @@ class Profile extends Component {
               </Col>
             </Row>
           </Card>
-        </Container>*/}
+        </Container> */}
       </Container>
     );
   }
+
+  getUserAvatar() {
+    // eslint-disable-next-line react/destructuring-assignment
+    const { avatar } = this.props.avatar;
+    if (avatar === null) {
+      return defaultUserPhoto;
+    }
+    return avatar.url;
+  }
+
+  loadPhoto = event => {
+    const photo = event.target.files[0];
+    apiClient.saveUserProfilePhoto(photo);
+    history.push(`/`);
+  };
 }
 
 Profile.whyDidYouRender = true;

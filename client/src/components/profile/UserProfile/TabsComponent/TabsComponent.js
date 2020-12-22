@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import reactStyle from 'react-tabs/style/react-tabs.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCog, faUserEdit } from '@fortawesome/free-solid-svg-icons';
@@ -42,8 +42,12 @@ const TabsComponent = ({
         <TabList>
           <div>
             <Tab id="aboutMe">{tabs.about[lang]}</Tab>
-           {/* <Tab id="additionalInfo">{tabs.additional[lang]}</Tab>
-            <Tab id="credits">{tabs.credits[lang]}</Tab>*/}
+            <Tab id="additionalInfo" className={styles.hidden}>
+              {tabs.additional[lang]}
+            </Tab>
+            <Tab id="credits" className={styles.hidden}>
+              {tabs.credits[lang]}
+            </Tab>
             <div className={styles.IconsWrapper}>
               {id === apiClient.userId() && (
                 <>
@@ -52,12 +56,12 @@ const TabsComponent = ({
                       <FontAwesomeIcon icon={faUserEdit} />
                     </Link>
                   </span>
-                  {/*<span className={styles.Bell}>
+                  <span className={(styles.Bell, styles.hidden)}>
                     <FontAwesomeIcon icon={faBell} />
                   </span>
-                  <span className={styles.Cog}>
+                  <span className={(styles.Cog, styles.hidden)}>
                     <FontAwesomeIcon icon={faCog} />
-                  </span>*/}
+                  </span>
                 </>
               )}
             </div>

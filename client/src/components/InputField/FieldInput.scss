@@ -4,12 +4,14 @@
 }
 
 .TextError {
+  float: left;
   color: #dd404e;
   font-size: 14px;
   margin-bottom: 0;
 }
 
 .TextHidden {
+  float: left;
   visibility: hidden;
   font-size: 14px;
 }
@@ -24,11 +26,10 @@ div[class*=form-group] {
 }
 
 .inputWrap {
-  width: 70%;
+  width: 100%;
 
   .fieldDefault {
     border: 1px solid #3f426b;
-    //width: 70%;
     height: 33px;
     font-size: 15px;
   }
