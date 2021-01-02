@@ -6,11 +6,13 @@ import _ from 'lodash';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import SearchIcon from '@material-ui/icons/Search';
 import s from './messages-search.scss';
+import textData from '../../../utils/lib/languages.json'
 
 class MessageSearchPanel extends Component {
 	static propTypes = {
-		setMessagesData: PropTypes.func.isRequired
-	};
+		setMessagesData: PropTypes.func.isRequired,
+    lang: PropTypes.string.isRequired,
+  };
 	state = {
 		search: ''
 	};
@@ -21,13 +23,14 @@ class MessageSearchPanel extends Component {
 	}, 700);
 
 	render() {
-		return (
+    const { lang } = this.props;
+    return (
 			<div className={s.SearchMessages}>
 				<input
 					className={s.SearchInputMessages}
 					type="text"
 					value={this.state.query}
-					placeholder="Search in messages..."
+					placeholder={textData.chatsPage.dialog.searchPlaceholder[lang]}
 					onChange={(e) => this.handleOnInputChange(e.target.value)}
 				/>
 				<SearchIcon />
@@ -38,11 +41,12 @@ class MessageSearchPanel extends Component {
 
 MessageSearchPanel.whyDidYouRender = true;
 export default connect(
-	({ userChats: { data, error, isLoading, chatOption } }) => ({
+	({ userChats: { data, error, isLoading, chatOption }, menu: { lang } }) => ({
 		data,
 		error,
 		isLoading,
-		chatOption
+		chatOption,
+    lang
 	}),
 	{ setMessagesData }
 )(withStyles(s)(React.memo(MessageSearchPanel)));

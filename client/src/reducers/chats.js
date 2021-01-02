@@ -13,7 +13,7 @@ import {
 
 const initialState = {
 	data: [],
-	error: '',
+	error: [],
 	isLoading: true,
 	chatOption: { id: '' },
 	messages: []

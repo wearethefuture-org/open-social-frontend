@@ -5,6 +5,7 @@ import s from './Chats.scss';
 import ChatsDialogs from './chats-dialogs/chats-dialogs';
 import ChatsNav from './chats-nav/chats-nav';
 import textData from '../../utils/lib/languages';
+import ModalContainer from "../Modal/ModalContainer";
 
 const Chats = () => {
   const lang = useSelector(store => store.menu.lang);
@@ -18,6 +19,7 @@ const Chats = () => {
         <ChatsNav />
       </div>
       <ChatsDialogs />
+      <ModalContainer />
     </div>
   );
 };

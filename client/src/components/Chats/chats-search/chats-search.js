@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import { getUsersChatData } from '../../../actions/chats';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import SearchIcon from '@material-ui/icons/Search';
 import s from './chats-search.module.scss';
+import textData from '../../../utils/lib/languages.json';
 
 class ChatSearchPanel extends Component {
-	static propTypes = {
-		getUsersChatData: PropTypes.func.isRequired
+  static propTypes = {
+		getUsersChatData: PropTypes.func.isRequired,
+    lang: PropTypes.string.isRequired,
 	};
 	state = {
 		search: ''
@@ -21,13 +23,14 @@ class ChatSearchPanel extends Component {
 	}, 700);
 
 	render() {
+    const { lang } = this.props;
 		return (
 			<div className={s.SearchDialogs}>
 				<input
 					className={s.SearchInputDialog}
 					type="text"
 					value={this.state.query}
-					placeholder="Search..."
+					placeholder={textData.general.searchPlaceholder[lang]}
 					onChange={(e) => this.handleOnInputChange(e.target.value)}
 				/>
 				<SearchIcon />
@@ -38,10 +41,11 @@ class ChatSearchPanel extends Component {
 
 ChatSearchPanel.whyDidYouRender = true;
 export default connect(
-	({ userChats: { data, error, isLoading } }) => ({
+	({ userChats: { data, error, isLoading }, menu: { lang } }) => ({
 		data,
 		error,
-		isLoading
+		isLoading,
+    lang
 	}),
 	{ getUsersChatData }
 )(withStyles(s)(React.memo(ChatSearchPanel)));

@@ -7,6 +7,7 @@ import userChats from './chats';
 import userAuth from './user-auth';
 import userProfile from './profile';
 import users from './users';
+import modal from './modal'
 
 export default combineReducers({
   confirm,
@@ -17,4 +18,5 @@ export default combineReducers({
   userChats,
   userProfile,
   users,
+  modal,
 });

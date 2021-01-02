@@ -73,13 +73,13 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
           <div className={style.user}>
             <div className={style.userName}>
               <span className={style.infoMessage}>
-                Please select a chat to start messaging
+                {dialog.selectChatTopTitle[lang]}
               </span>
             </div>
           </div>
         </header>
         <div className={style.messagesWrapper}>
-          <span className={style.infoMessage}>Select a chat first</span>
+          <span className={style.infoMessage}>{dialog.selectChatBottomTitle[lang]}</span>
         </div>
         <div className={style.formLine} />
       </div>

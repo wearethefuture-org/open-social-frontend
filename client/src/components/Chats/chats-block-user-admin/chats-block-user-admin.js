@@ -16,7 +16,7 @@ const ChatsBlockUserAdmin = ({
   isLoading,
 }) => {
   if (error) {
-    return <p className="mb-0">{error}</p>;
+    return <p className="mb-0">{error.message}</p>;
   }
 
 	if (isLoading) {
