@@ -7,6 +7,7 @@ import s from './RatingButtons.scss';
 
 const RatingButtons = ({ likes = 0 }) => {
   const [counter, setCounter] = useState(0);
+  const [localCounter, setLocalCounter] = useState(0);
 
   useEffect(() => {
     setCounter(likes);
@@ -15,10 +16,12 @@ const RatingButtons = ({ likes = 0 }) => {
   const [voted, setVoted] = useState('');
 
   const handleVoted = ({ currentTarget: { name } }) => {
-    const result = name === 'like' ? counter + 1 : counter - 1;
-    setCounter(result);
+    const result = name === 'like' ? localCounter + 1 : localCounter - 1;
+    setLocalCounter(result);
     setVoted(name);
   };
+
+  console.log(localCounter);
 
   return (
     <div className={s.container}>
@@ -27,15 +30,17 @@ const RatingButtons = ({ likes = 0 }) => {
         name="like"
         type="button"
         className={voted === 'like' ? s.buttonActive : s.button}
+        disabled={localCounter === 1}
       >
         <ThumbUpAltIcon className={s.buttonIconLike} />
       </button>
-      <span className={s.counter}>{counter}</span>
+      <span className={s.counter}>{localCounter}</span>
       <button
         onClick={handleVoted}
         name="dislike"
         type="button"
         className={voted === 'dislike' ? s.buttonActive : s.button}
+        disabled={localCounter === -1}
       >
         <ThumbDownIcon className={s.buttonIconDislike} />
       </button>
