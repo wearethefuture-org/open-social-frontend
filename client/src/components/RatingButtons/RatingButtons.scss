@@ -1,0 +1,51 @@
+@import '../../style/variables.scss';
+
+.container {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 50px;
+  border: 1px solid $bg-default-select;
+}
+
+.buttonActive {
+  border-radius: 50px;
+  background-color: $bg-default-select;
+
+  .buttonIconLike {
+    color: #3140e3;
+  }
+
+  .buttonIconDislike {
+    color: #ef5d50;
+  }
+}
+
+.button {
+  border-radius: 50px;
+  transition: all 0.5s;
+
+  .buttonIconLike {
+    color: $color-default-text;
+  }
+
+  .buttonIconDislike {
+    color: $color-default-text;
+  }
+
+  &:hover {
+    background-color: $bg-default-select;
+
+    .buttonIconLike {
+      color: #3140e3;
+    }
+
+    .buttonIconDislike {
+      color: #ef5d50;
+    }
+  }
+}
+
+.counter {
+  font-family: $font-family-base;
+}

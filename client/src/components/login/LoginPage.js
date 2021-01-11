@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Link from '../Link/Link';
@@ -15,6 +15,8 @@ import textData from '../../utils/lib/languages.json';
 import s from './Login.scss';
 // import banner from "../../assets/images_banner/loginBackground.png";
 // import banner from '../../assets/images_banner/withoutLogo.png';
+
+import RatingButtons from '../RatingButtons';
 
 class LoginPage extends React.Component {
   static propTypes = {
@@ -71,6 +73,7 @@ class LoginPage extends React.Component {
               </div>
             )}
           </div>
+          <RatingButtons />
         </div>
       </div>
     );
