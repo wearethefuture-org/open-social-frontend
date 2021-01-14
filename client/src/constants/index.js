@@ -18,6 +18,7 @@ export const USERS_DATA_LOADING_DATA_FAILURE =
 export const SET_USERS = 'SET_USERS';
 export const SET_USER_AUTH = 'SET_USER_AUTH';
 export const GET_USER_DATA = 'GET_USER_DATA';
+export const GET_COUNTER = 'GET_COUNTER';
 
 export const USERS_CHAT_DATA_LOADING = 'USERS_CHAT_DATA_LOADING';
 export const USERS_CHAT_DATA_LOADING_DATA_SUCCESS =
@@ -37,7 +38,9 @@ export const PROFILE_DATA_LOADING_DATA_SUCCESS =
   'PROFILE_DATA_LOADING_DATA_SUCCESS';
 export const PROFILE_DATA_LOADING_DATA_FAILURE =
   'PROFILE_DATA_LOADING_DATA_FAILURE';
+export const COUNTERS_DATA_SUCCESS = 'COUNTERS_DATA_SUCCESS';
+export const SET_FILTER_ANALYTIC = 'SET_FILTER_DATE';
 
-export const apiURL = 'https://social.cloudns.cl';
+// export const apiURL = 'https://social.cloudns.cl';
 // export const apiURL = "http://178.20.156.208:4000";
-// export const apiURL = 'http://localhost:4000';
+export const apiURL = 'http://localhost:4000';

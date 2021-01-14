@@ -4,14 +4,17 @@
 }
 
 .TextError {
+  float: left;
+  font-size: 1.4rem;
+  margin: 5px 0;
   color: #dd404e;
-  font-size: 14px;
-  margin-bottom: 0;
 }
 
 .TextHidden {
+  float: left;
   visibility: hidden;
-  font-size: 14px;
+  font-size: 1.4rem;
+  margin: 5px 0;
 }
 
 div[class*=form-group] {
@@ -20,20 +23,20 @@ div[class*=form-group] {
 
 .fieldDefault {
   border: 1px solid #3f426b;
-  font-size: 14px;
+  font-size: 1.5rem;
 }
 
 .inputWrap {
-  width: 70%;
+  width: 100%;
 
   .fieldDefault {
     border: 1px solid #3f426b;
-    //width: 70%;
     height: 33px;
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 
   .InputError {
     height: 33px;
+    font-size: 1.5rem;
   }
 }

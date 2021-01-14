@@ -12,6 +12,8 @@ const FieldInput = ({
   description,
   placeholder,
   id,
+  as,
+  children,
   ...props
 }) => {
   const showError = touched && error;
@@ -24,12 +26,16 @@ const FieldInput = ({
         name={name}
         onBlur={onBlur}
         type={type}
+        as={as}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         description={description}
         props={props && ''}
-      />
+      >
+        {children}
+      </FormControl>
+
       <>
         {showError ? (
           <span className={styles.TextError}>{`${description} ${error}`}</span>
@@ -42,7 +48,10 @@ const FieldInput = ({
 };
 
 FieldInput.propTypes = {
+  as: PropTypes.string,
+  children: PropTypes.array,
   description: PropTypes.string.isRequired,
+  id: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
@@ -55,7 +64,6 @@ FieldInput.propTypes = {
   }).isRequired,
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  id: PropTypes.string,
 };
 
 export default withStyles(bootstrap, styles)(FieldInput);

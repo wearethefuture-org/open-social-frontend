@@ -38,3 +38,19 @@ export const symbolsName = value => {
     value && !/^[/a-zA-Zа-яА-Я\-a-zA-Zа-яА-Я]+$/.test(value) && 'is invalid'
   );
 };
+
+export const startDate = (value, valueData) => {
+  const { endDate } = valueData;
+
+  if (Date.parse(value) >= Date.parse(endDate))
+    return `can not be more than ${endDate} or equal`;
+
+  return (
+    new Date(value) < new Date('2000-01-01') &&
+    'can not be less than 2000-01-01'
+  );
+};
+
+export const endDate = value => {
+  return new Date(value) > new Date() && 'can not be more than current date';
+};

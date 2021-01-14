@@ -1,0 +1,33 @@
+.container {
+  margin: 90px 40px 30px;
+}
+
+.totalStatistic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 265px;
+  font-size: 2.1rem;
+  padding: 10px;
+}
+
+.form {
+  margin: 20px auto;
+}
+
+.line {
+  background-color: #f4f4f4;
+}
+
+@media (max-width: 960px) {
+  .totalStatistic {
+    justify-content: start;
+    height: auto;
+  }
+}
+
+@media (max-width: 460px) {
+  .form {
+    width: 210px;
+  }
+}
