@@ -8,25 +8,40 @@ import s from './AnalyticProfile.scss';
 import Chart from './Chart/Chart';
 import TotalStatic from './TotalStatic/TotalStatic';
 import AnalyticProfileForm from './AnalyticProfileForm/AnalyticProfileForm';
-import { getDataAnalytic } from '../../actions/profile';
+import { getDataAnalytics } from '../../actions/analytics';
 import textData from '../../utils/lib/languages.json';
+import Loader from '../Loader/Loader';
 
 class AnalyticProfile extends React.Component {
   static propTypes = {
-    getDataAnalytic: PropTypes.func.isRequired,
+    error: PropTypes.string.isRequired,
+    getDataAnalytics: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     lang: PropTypes.string.isRequired,
   };
 
   handleSubmit = async data => {
-    const { getDataAnalytic } = this.props;
-    await getDataAnalytic(data);
+    // eslint-disable-next-line no-shadow
+    const { getDataAnalytics } = this.props;
+    await getDataAnalytics(data);
   };
 
   render() {
-    const { lang } = this.props;
+    const { lang, error, isLoading } = this.props;
     const {
-      analyticPage: { filter },
+      analyticsPage: { filter },
     } = textData;
+
+    if (error) {
+      return <p className="mb-0">{error}</p>;
+    }
+    if (isLoading) {
+      return (
+        <div>
+          <Loader />
+        </div>
+      );
+    }
 
     return (
       <>
@@ -56,8 +71,10 @@ class AnalyticProfile extends React.Component {
 AnalyticProfile.whyDidYouRender = true;
 
 export default connect(
-  ({ menu: { lang } }) => ({
+  ({ menu: { lang }, analytics: { error, isLoading } }) => ({
+    error,
+    isLoading,
     lang,
   }),
-  { getDataAnalytic },
+  { getDataAnalytics },
 )(withStyles(bootstrap, s)(React.memo(AnalyticProfile)));

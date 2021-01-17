@@ -13,7 +13,7 @@ import textData from '../../../utils/lib/languages.json';
 const AnalyticProfileForm = ({ handleSubmit }) => {
   const lang = useSelector(store => store.menu.lang);
   const {
-    analyticPage: {
+    analyticsPage: {
       filter: { selectName, selectStep, startDate, endDate },
     },
   } = textData;
@@ -88,15 +88,15 @@ AnalyticProfileForm.propTypes = {
 const mapStateToProps = state => {
   return {
     initialValues: {
-      endDate: state.userProfile.filterAnalytic.endDate,
-      name: state.userProfile.filterAnalytic.name,
-      startDate: state.userProfile.filterAnalytic.startDate,
-      step: state.userProfile.filterAnalytic.step,
+      endDate: state.analytics.filter.endDate,
+      name: state.analytics.filter.name,
+      startDate: state.analytics.filter.startDate,
+      step: state.analytics.filter.step,
     },
   };
 };
 export default connect(mapStateToProps)(
-  reduxForm({ enableReinitialize: true, form: 'analytic-profile-form' })(
+  reduxForm({ enableReinitialize: true, form: 'analytics-form' })(
     withStyles(bootstrap, s)(React.memo(AnalyticProfileForm)),
   ),
 );

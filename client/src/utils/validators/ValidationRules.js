@@ -29,6 +29,6 @@ export const VALIDATION_RULES = {
   FIRST_NAME: [required, minLengthName, maxLength, symbolsName],
   LAST_NAME: [required, minLengthName, maxLength, symbolsName],
   PASSWORD: [required, minLength, maxLength],
-  START_DAY: [required, startDate, endDate],
+  START_DAY: [required, startDate],
   USERNAME: [required, minLengthName, maxLength],
 };

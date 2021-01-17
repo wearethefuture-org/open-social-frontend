@@ -57,9 +57,9 @@ const routes = [
       {
         load: () =>
           import(
-            /* webpackChunkName: 'analytic-profile' */ '../components/AnalyticProfile'
+            /* webpackChunkName: 'analytics' */ '../components/AnalyticProfile'
           ),
-        path: '/analytic-profile',
+        path: '/analytics',
       },
       {
         load: () =>

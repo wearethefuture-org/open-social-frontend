@@ -32,6 +32,9 @@ const Tab = ({
       case 'Users':
         setIsCurrent('users');
         break;
+      case 'Analytics':
+        setIsCurrent('analytics');
+        break;
       case 'About':
         setIsCurrent('about');
         break;

@@ -40,17 +40,29 @@ export const symbolsName = value => {
 };
 
 export const startDate = (value, valueData) => {
-  const { endDate } = valueData;
+  const { endDate, step } = valueData;
 
-  if (Date.parse(value) >= Date.parse(endDate))
-    return `can not be more than ${endDate} or equal`;
+  if (
+    step === 'month' &&
+    new Date(value).getUTCFullYear() === new Date(endDate).getUTCFullYear() &&
+    new Date(value).getUTCMonth() === new Date(endDate).getUTCMonth()
+  )
+    return 'can not be with the same month of the year end date';
+
+  if (new Date(value) < new Date('2018-01-01'))
+    return 'can not be less than 2018-01-01';
 
   return (
-    new Date(value) < new Date('2000-01-01') &&
-    'can not be less than 2000-01-01'
+    new Date(value) > new Date(endDate) &&
+    `can not be more than ${endDate} or equal`
   );
 };
 
-export const endDate = value => {
+export const endDate = (value, valueData) => {
+  const { startDate, step } = valueData;
+
+  if (step === 'day' && new Date(value) <= new Date(startDate))
+    return `can not be less than ${startDate} or equal`;
+
   return new Date(value) > new Date() && 'can not be more than current date';
 };

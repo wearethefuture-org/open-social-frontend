@@ -64,6 +64,14 @@
         "ru": "Мой профиль"
       },
       "path": "/"
+    },
+    "analytics": {
+      "label": {
+        "uk": "Аналітика",
+        "en": "Analytics",
+        "ru": "Аналитика"
+      },
+      "path": "analytics"
     }
   },
   "loginPage": {
@@ -337,7 +345,7 @@
         "ru": "Дата рождения"
       }
     },
-    "analyticData": {
+    "analyticsData": {
       "registrationDate": {
         "uk": "Дата реєстрації",
         "en": "Registration Date",
@@ -389,7 +397,7 @@
       }
     }
   },
-  "analyticPage": {
+  "analyticsPage": {
     "filter": {
       "title": {
         "uk": "Вкажіть дату",
@@ -434,15 +442,20 @@
           "en": "Registered users",
           "ru": "Зарегистрировано пользователей"
         },
-        "tooltipOne": {
-          "uk": "Зареєстровано на",
-          "en": "Registered on",
-          "ru": "Зарегистрировано на"
+        "selectDate": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
         },
-        "tooltipSecond": {
+        "tooltipOne": {
           "uk": "Зареєстровано",
           "en": "Registered",
           "ru": "Зарегистрировано"
+        },
+        "tooltipSecond": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
         }
       },
       "chats": {
@@ -452,24 +465,29 @@
           "ru": "Создано чатов"
         },
         "total": {
-          "uk": "Всього користувачів",
-          "en": "Total users",
-          "ru": "Всего пользователей"
+          "uk": "Всього створено",
+          "en": "Total chats",
+          "ru": "Всего создано"
         },
         "select": {
           "uk": "Створено чатів",
           "en": "Created chats",
           "ru": "Создано чатов"
         },
-        "tooltipOne": {
-          "uk": "Створено на",
-          "en": "Created on",
-          "ru": "Создано на"
+        "selectDate": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
         },
-        "tooltipSecond": {
+        "tooltipOne": {
           "uk": "Створено",
           "en": "Created",
           "ru": "Создано"
+        },
+        "tooltipSecond": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
         }
       }
     }

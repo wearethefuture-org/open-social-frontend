@@ -13,39 +13,13 @@ import {
 import { Typography } from '@material-ui/core';
 import s from './Chart.scss';
 import textData from '../../../utils/lib/languages.json';
+import CustomTooltip from './CustomTooltip/CustomTooltip';
 
-const CustomTooltip = ({
-  active,
-  payload,
-  label,
-  tooltipOne,
-  tooltipSecond,
-}) => {
-  if (payload === null || typeof payload === 'undefined') return null;
-
-  if (active) {
-    return (
-      <div className={s.customTooltip}>
-        <div className={s.label}>
-          {tooltipOne} <span className={s.labelDate}>{label}</span>:{' '}
-          <span className={s.spanLabel}>{payload[0].value}</span>
-        </div>
-        <div>
-          {tooltipSecond} <span className={s.labelDate}>{label}</span>:{' '}
-          <span className={s.spanLabel}>{payload[0].payload.count}</span>
-        </div>
-      </div>
-    );
-  }
-
-  return null;
-};
-
-const Chart = ({ countUsers, countChats }) => {
+const Chart = ({ countUsers, countChats, startDate }) => {
   const lang = useSelector(store => store.menu.lang);
-  const name = useSelector(store => store.userProfile.filterAnalytic.name);
+  const name = useSelector(store => store.analytics.filter.name);
   const {
-    analyticPage: { chart },
+    analyticsPage: { chart },
   } = textData;
 
   return (
@@ -53,7 +27,7 @@ const Chart = ({ countUsers, countChats }) => {
       <Typography variant="h3" className={s.title}>
         {chart[name].name[lang]}
       </Typography>
-      <ResponsiveContainer height={200} width="100%">
+      <ResponsiveContainer height={235} width="100%">
         <AreaChart
           data={countUsers || countChats}
           margin={{
@@ -66,14 +40,15 @@ const Chart = ({ countUsers, countChats }) => {
           <XAxis dataKey="date" />
           <YAxis />
           <Tooltip
-            content={CustomTooltip}
+            content={<CustomTooltip />}
             tooltipOne={chart[name].tooltipOne[lang]}
             tooltipSecond={chart[name].tooltipSecond[lang]}
             cursor={false}
             animationDuration={300}
+            startDate={startDate}
           />
           <Area
-            dataKey="sumCount"
+            dataKey="count"
             type="monotone"
             stroke="#8884d8"
             fill="#8884d8"
@@ -85,24 +60,28 @@ const Chart = ({ countUsers, countChats }) => {
 };
 
 Chart.propTypes = {
-  countChats: PropTypes.array,
-  countUsers: PropTypes.array,
+  countChats: PropTypes.arrayOf(PropTypes.object),
+  countUsers: PropTypes.arrayOf(PropTypes.object),
+  startDate: PropTypes.string,
 };
 
 Chart.defaultProps = {
   countChats: null,
   countUsers: null,
+  startDate: 'start date',
 };
 
 Chart.whyDidYouRender = true;
 
 export default connect(
   ({
-    userProfile: {
+    analytics: {
       analytics: { countUsers, countChats },
+      filter: { startDate },
     },
   }) => ({
     countChats,
     countUsers,
+    startDate,
   }),
 )(withStyles(s)(React.memo(Chart)));

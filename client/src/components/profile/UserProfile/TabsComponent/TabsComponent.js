@@ -31,17 +31,17 @@ const TabsComponent = ({
 }) => {
   const lang = useSelector(store => store.menu.lang);
   const {
-    profilePage: { tabs, aboutData, analyticData },
+    profilePage: { tabs, aboutData, analyticsData },
   } = textData;
   const dataObject = {
     analytics: [
       {
-        column: `${analyticData.registrationDate[lang]}`,
+        column: `${analyticsData.registrationDate[lang]}`,
         value: `${moment(createdAt).format('MM-DD-YYYY')}`,
       },
-      { column: `${analyticData.сreatedСhats[lang]}`, value: `${countChats}` },
+      { column: `${analyticsData.сreatedСhats[lang]}`, value: `${countChats}` },
       {
-        column: `${analyticData.сreatedMessages[lang]}`,
+        column: `${analyticsData.сreatedMessages[lang]}`,
         value: `${countMessages}`,
       },
     ],
@@ -53,6 +53,17 @@ const TabsComponent = ({
         value: `${moment(birthdayDate).format('MM-DD-YYYY')}`,
       },
     ],
+  };
+
+  const data = item => {
+    return (
+      <Container key={item.column}>
+        <div className={styles.TabsItemRow}>
+          <div className={styles.TabsItemCol}>{item.column}:</div>
+          <div className={styles.TabsItemValue}>{item.value}</div>
+        </div>
+      </Container>
+    );
   };
 
   return (
@@ -76,11 +87,6 @@ const TabsComponent = ({
                       <FontAwesomeIcon icon={faUserEdit} />
                     </Link>
                   </span>
-                  <span className={styles.Analytic}>
-                    <Link to="/analytic-profile">
-                      <FontAwesomeIcon icon={faChartBar} />
-                    </Link>
-                  </span>
                   <span className={(styles.Bell, styles.hidden)}>
                     <FontAwesomeIcon icon={faBell} />
                   </span>
@@ -95,14 +101,7 @@ const TabsComponent = ({
         <TabPanel className={styles.TabPanel}>
           <h4>{` ${firstName} ${lastName}`}</h4>
           {dataObject.userInformation.map(item => {
-            return (
-              <Container key={item.column}>
-                <div className={styles.TabsItemRow}>
-                  <div className={styles.TabsItemCol}>{item.column}:</div>
-                  <div>{item.value}</div>
-                </div>
-              </Container>
-            );
+            return data(item);
           })}
         </TabPanel>
         <TabPanel className={styles.TabPanel}>
@@ -113,14 +112,7 @@ const TabsComponent = ({
         </TabPanel>
         <TabPanel className={styles.TabPanel}>
           {dataObject.analytics.map(item => {
-            return (
-              <Container key={item.column}>
-                <div className={styles.TabsItemRow}>
-                  <div className={styles.TabsItemCol}>{item.column}:</div>
-                  <div>{item.value}</div>
-                </div>
-              </Container>
-            );
+            return data(item);
           })}
         </TabPanel>
       </Tabs>
@@ -130,12 +122,14 @@ const TabsComponent = ({
 
 TabsComponent.defaultProps = {
   birthdayDate: null,
+  countChats: null,
+  countMessages: null,
 };
 
 TabsComponent.propTypes = {
   birthdayDate: PropTypes.string,
-  countChats: PropTypes.number.isRequired,
-  countMessages: PropTypes.number.isRequired,
+  countChats: PropTypes.number,
+  countMessages: PropTypes.number,
   createdAt: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
@@ -155,11 +149,10 @@ export default connect(
       birthdayDate,
       id,
       createdAt,
-      counters: { countAllUsers, countChats, countMessages },
+      analytics: { countChats, countMessages },
     },
   }) => ({
     birthdayDate,
-    countAllUsers,
     countChats,
     countMessages,
     createdAt,

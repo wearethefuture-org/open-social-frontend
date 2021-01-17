@@ -5,50 +5,55 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './TotalStatic.scss';
 import textData from '../../../utils/lib/languages.json';
 
-const TotalStatic = ({ countAllUsers, countSelectUsers, countSelectChats }) => {
+const TotalStatic = ({ totalCount, countSelect, startDate, endDate }) => {
   const lang = useSelector(store => store.menu.lang);
-  const name = useSelector(store => store.userProfile.filterAnalytic.name);
+  const name = useSelector(store => store.analytics.filter.name);
   const {
-    analyticPage: { chart },
+    analyticsPage: { chart },
   } = textData;
 
   return (
     <>
       <div>
         <div>{chart[name].total[lang]}</div>
-        <div className={s.amount}>{countAllUsers}</div>
-        <hr />
+        <div className={s.amount}>{totalCount}</div>
+        <br />
         <div>{chart[name].select[lang]}</div>
-        <div className={s.amount}>
-          {countSelectUsers || countSelectChats || 0}
-        </div>
+        <span
+          className={s.date}
+        >{`${startDate} ${chart[name].selectDate[lang]} ${endDate}`}</span>
+        <div className={s.amount}>{countSelect}</div>
       </div>
     </>
   );
 };
 
 TotalStatic.propTypes = {
-  countAllUsers: PropTypes.number,
-  countSelectChats: PropTypes.number,
-  countSelectUsers: PropTypes.number,
+  countSelect: PropTypes.number,
+  endDate: PropTypes.string,
+  startDate: PropTypes.string,
+  totalCount: PropTypes.number,
 };
 
 TotalStatic.defaultProps = {
-  countAllUsers: null,
-  countSelectChats: null,
-  countSelectUsers: null,
+  countSelect: 0,
+  endDate: 'end date',
+  startDate: 'start date',
+  totalCount: 0,
 };
 
 TotalStatic.whyDidYouRender = true;
 
 export default connect(
   ({
-    userProfile: {
-      analytics: { countAllUsers, countSelectUsers, countSelectChats },
+    analytics: {
+      analytics: { totalCount, countSelect },
+      filter: { startDate, endDate },
     },
   }) => ({
-    countAllUsers,
-    countSelectChats,
-    countSelectUsers,
+    countSelect,
+    endDate,
+    startDate,
+    totalCount,
   }),
 )(withStyles(s)(React.memo(TotalStatic)));

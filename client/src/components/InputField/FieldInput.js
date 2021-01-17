@@ -49,7 +49,7 @@ const FieldInput = ({
 
 FieldInput.propTypes = {
   as: PropTypes.string,
-  children: PropTypes.array,
+  children: PropTypes.node,
   description: PropTypes.string.isRequired,
   id: PropTypes.string,
   input: PropTypes.shape({
