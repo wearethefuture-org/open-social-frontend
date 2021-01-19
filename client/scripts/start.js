@@ -4,7 +4,6 @@
 /* eslint-disable promise/no-promise-in-callback */
 import path from 'path';
 import express from 'express';
-import browserSync from 'browser-sync';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -12,8 +11,9 @@ import errorOverlayMiddleware from 'react-dev-utils/errorOverlayMiddleware';
 import webpackConfig from './webpack.config';
 import run, { format } from './run';
 import clean from './clean';
+import configFile from '../src/config';
 
-const isDebug = !process.argv.includes('--release');
+const PORT = parseInt(configFile.port);
 
 // https://webpack.js.org/configuration/watch/#watchoptions
 const watchOptions = {
@@ -206,19 +206,10 @@ async function start() {
   appPromiseIsResolved = true;
   appPromiseResolve();
 
-  // Launch the development server with Browsersync and HMR
-  await new Promise((resolve, reject) =>
-    browserSync.create().init(
-      {
-        // https://www.browsersync.io/docs/options
-        middleware: [server],
-        open: !process.argv.includes('--silent'),
-        server: 'src/server.js',
-        ...(isDebug ? {} : { notify: false, ui: false }),
-      },
-      (error, bs) => (error ? reject(error) : resolve(bs)),
-    ),
-  );
+  // Launch the development server with HMR
+  server.listen(PORT, () => {
+    console.info(`Application is running on port: ${PORT}`);
+  });
 
   const timeEnd = new Date();
   const time = timeEnd.getTime() - timeStart.getTime();
