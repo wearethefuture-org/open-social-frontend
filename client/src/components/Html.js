@@ -20,7 +20,8 @@ function Html(props) {
           <link key={script} rel="preload" href={script} as="script" />
         ))}
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="apple-touch-icon" href="/icon.png" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {styles.map(style => (
           <style
             key={style.id}
