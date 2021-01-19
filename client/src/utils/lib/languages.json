@@ -2,46 +2,89 @@
   "langSelect": ["uk", "en", "ru"],
   "menuButtons": {
     "profile": {
-      "label": { "uk": "Профіль", "en": "Profile", "ru": "Профиль" },
+      "label": {
+        "uk": "Профіль",
+        "en": "Profile",
+        "ru": "Профиль"
+      },
       "path": ""
     },
     "about": {
-      "label": { "uk": "Про нас", "en": "About", "ru": "О нас" },
+      "label": {
+        "uk": "Про нас",
+        "en": "About",
+        "ru": "О нас"
+      },
       "path": "about"
     },
     "chats": {
-      "label": { "uk": "Чати", "en": "Chats", "ru": "Чаты" },
+      "label": {
+        "uk": "Чати",
+        "en": "Chats",
+        "ru": "Чаты"
+      },
       "path": "chats"
     },
     "users": {
-      "label": { "uk": "Користувачі", "en": "Users", "ru": "Пользователи" },
+      "label": {
+        "uk": "Користувачі",
+        "en": "Users",
+        "ru": "Пользователи"
+      },
       "path": "users"
     },
     "login": {
-      "label": { "uk": "Вхід", "en": "Login", "ru": "Вход" },
+      "label": {
+        "uk": "Вхід",
+        "en": "Login",
+        "ru": "Вход"
+      },
       "path": "login"
     },
     "signUp": {
-      "label": { "uk": "Реєстрація", "en": "SignUp", "ru": "Регистрация" },
+      "label": {
+        "uk": "Реєстрація",
+        "en": "SignUp",
+        "ru": "Регистрация"
+      },
       "path": "singup"
     },
     "signOut": {
-      "label": { "uk": "Вихід", "en": "Sign out", "ru": "Выход" },
+      "label": {
+        "uk": "Вихід",
+        "en": "Sign out",
+        "ru": "Выход"
+      },
       "path": "signout"
     },
     "MyProfile": {
-      "label": { "uk": "Мій профіль", "en": "My profile", "ru": "Мой профиль" },
+      "label": {
+        "uk": "Мій профіль",
+        "en": "My profile",
+        "ru": "Мой профиль"
+      },
       "path": "/"
+    },
+    "analytics": {
+      "label": {
+        "uk": "Аналітика",
+        "en": "Analytics",
+        "ru": "Аналитика"
+      },
+      "path": "analytics"
     }
   },
-
   "loginPage": {
     "title": {
       "uk": "Вхід",
       "en": "Log in",
       "ru": "Вход"
     },
-    "signup": { "uk": "Реєстрація", "en": "Sign Up", "ru": "Регистрация" },
+    "signup": {
+      "uk": "Реєстрація",
+      "en": "Sign Up",
+      "ru": "Регистрация"
+    },
     "isNotAutorized": {
       "uk": "Ще не зареєструвалися?",
       "en": "Not signed up yet?",
@@ -61,7 +104,11 @@
         }
       },
       "password": {
-        "label": { "uk": "Пароль", "en": "Password", "ru": "Пароль" },
+        "label": {
+          "uk": "Пароль",
+          "en": "Password",
+          "ru": "Пароль"
+        },
         "placeholder": {
           "uk": "введіть пароль",
           "en": "enter password",
@@ -79,7 +126,11 @@
       "en": "Forgot the password?",
       "ru": "Забыли пароль?"
     },
-    "submitButton": { "uk": "Вхід", "en": "Go", "ru": "Вход" },
+    "submitButton": {
+      "uk": "Вхід",
+      "en": "Go",
+      "ru": "Вход"
+    },
     "successSignUp": {
       "uk": "Дякуємо за реєстрацію! Ми відправимо вам повідомлення на вашу електронну пошту.",
       "en": "Thanks for registration! We send you a message on your email.",
@@ -92,9 +143,13 @@
       "en": "Registration",
       "ru": "Регистрация"
     },
-    "login": { "uk": "Вхід", "en": "Log in", "ru": "Вход" },
+    "login": {
+      "uk": "Вхід",
+      "en": "Log in",
+      "ru": "Вход"
+    },
     "isRegistred": {
-      "uk": "Вже зареєстровані ?",
+      "uk": "Вже зареєстровані?",
       "en": "Already signed up?",
       "ru": "Уже зарегистрировались?"
     },
@@ -112,7 +167,11 @@
         }
       },
       "lastName": {
-        "label": { "uk": "призвище", "en": "last name", "ru": "фамилия" },
+        "label": {
+          "uk": "призвище",
+          "en": "last name",
+          "ru": "фамилия"
+        },
         "placeholder": {
           "uk": "ваше  призвище",
           "en": "last name",
@@ -156,7 +215,11 @@
         }
       },
       "password": {
-        "label": { "uk": "Пароль", "en": "Password", "ru": "Пароль" },
+        "label": {
+          "uk": "Пароль",
+          "en": "Password",
+          "ru": "Пароль"
+        },
         "placeholder": {
           "uk": "введіть пароль",
           "en": "enter password",
@@ -209,8 +272,16 @@
     }
   },
   "usersPage": {
-    "title": { "uk": "Користувачі", "en": "Users", "ru": "Пользователи" },
-    "addButton": { "uk": "Додати", "en": "Add", "ru": "Добавить" }
+    "title": {
+      "uk": "Користувачі",
+      "en": "Users",
+      "ru": "Пользователи"
+    },
+    "addButton": {
+      "uk": "Додати",
+      "en": "Add",
+      "ru": "Добавить"
+    }
   },
   "profilePage": {
     "ownChat": {
@@ -236,13 +307,26 @@
       }
     },
     "tabs": {
-      "about": { "uk": "Про мене", "en": "About me", "ru": "Обо мне" },
+      "about": {
+        "uk": "Про мене",
+        "en": "About me",
+        "ru": "Обо мне"
+      },
       "additional": {
         "uk": "Додатково",
         "en": "Additional info",
         "ru": "Дополнительно"
       },
-      "credits": { "uk": "Вплив", "en": "Credits", "ru": "Влияние" }
+      "credits": {
+        "uk": "Вплив",
+        "en": "Credits",
+        "ru": "Влияние"
+      },
+      "analytics": {
+        "uk": "Аналітика",
+        "en": "Analytics",
+        "ru": "Аналитика"
+      }
     },
     "aboutData": {
       "username": {
@@ -250,18 +334,55 @@
         "en": "User name",
         "ru": "Имя пользователя"
       },
-      "email": { "uk": "Ел. пошта", "en": "Email", "ru": "Эл. адрес" },
+      "email": {
+        "uk": "Ел. пошта",
+        "en": "Email",
+        "ru": "Эл. адрес"
+      },
       "birthday": {
         "uk": "Дата народження",
         "en": "Birthday date",
         "ru": "Дата рождения"
       }
     },
+    "analyticsData": {
+      "registrationDate": {
+        "uk": "Дата реєстрації",
+        "en": "Registration Date",
+        "ru": "Дата регистрации"
+      },
+      "сreatedСhats": {
+        "uk": "Створено чатів",
+        "en": "Created chats",
+        "ru": "Создано чатов"
+      },
+      "сreatedMessages": {
+        "uk": "Кількість повідомлень",
+        "en": "Number of messages",
+        "ru": "Количество сообщений"
+      }
+    },
     "buttons": {
-      "connect": { "uk": "Підключення", "en": "Connect", "ru": "Подключение" },
-      "message": { "uk": "Повідомлення", "en": "Messages", "ru": "Сообщения" },
-      "review": { "uk": "Переглянути", "en": "Review", "ru": "Обзор" },
-      "chat": { "uk": "Новий чат", "en": "Own chat", "ru": "Новый чат" }
+      "connect": {
+        "uk": "Підключення",
+        "en": "Connect",
+        "ru": "Подключение"
+      },
+      "message": {
+        "uk": "Повідомлення",
+        "en": "Messages",
+        "ru": "Сообщения"
+      },
+      "review": {
+        "uk": "Переглянути",
+        "en": "Review",
+        "ru": "Обзор"
+      },
+      "chat": {
+        "uk": "Новий чат",
+        "en": "Own chat",
+        "ru": "Новый чат"
+      }
     },
     "activities": {
       "followers": {
@@ -269,7 +390,106 @@
         "en": "Followers",
         "ru": "Подписчики"
       },
-      "chats": { "uk": "Всіх чатів", "en": "Active chats", "ru": "Всех чатов" }
+      "chats": {
+        "uk": "Всіх чатів",
+        "en": "Active chats",
+        "ru": "Всех чатов"
+      }
+    }
+  },
+  "analyticsPage": {
+    "filter": {
+      "title": {
+        "uk": "Вкажіть дату",
+        "en": "Specify the date",
+        "ru": "Укажите дату"
+      },
+      "selectName": {
+        "uk": "Назва:",
+        "en": "Name:",
+        "ru": "Название:"
+      },
+      "selectStep": {
+        "uk": "Крок:",
+        "en": "Step:",
+        "ru": "Шаг:"
+      },
+      "startDate": {
+        "uk": "Введіть дату:",
+        "en": "Enter start date:",
+        "ru": "Введите дату:"
+      },
+      "endDate": {
+        "uk": "Введіть дату:",
+        "en": "Enter end date:",
+        "ru": "Введите дату:"
+      }
+    },
+    "chart": {
+      "users": {
+        "name": {
+          "uk": "Зареєстровано користувачів",
+          "en": "Registered users",
+          "ru": "Зарегистрировано пользователей"
+        },
+        "total": {
+          "uk": "Всього користувачів",
+          "en": "Total users",
+          "ru": "Всего пользователей"
+        },
+        "select": {
+          "uk": "Зареєстровано користувачів",
+          "en": "Registered users",
+          "ru": "Зарегистрировано пользователей"
+        },
+        "selectDate": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        },
+        "tooltipOne": {
+          "uk": "Зареєстровано",
+          "en": "Registered",
+          "ru": "Зарегистрировано"
+        },
+        "tooltipSecond": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        }
+      },
+      "chats": {
+        "name": {
+          "uk": "Створено чатів",
+          "en": "Created chats",
+          "ru": "Создано чатов"
+        },
+        "total": {
+          "uk": "Всього створено",
+          "en": "Total chats",
+          "ru": "Всего создано"
+        },
+        "select": {
+          "uk": "Створено чатів",
+          "en": "Created chats",
+          "ru": "Создано чатов"
+        },
+        "selectDate": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        },
+        "tooltipOne": {
+          "uk": "Створено",
+          "en": "Created",
+          "ru": "Создано"
+        },
+        "tooltipSecond": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        }
+      }
     }
   }
 }

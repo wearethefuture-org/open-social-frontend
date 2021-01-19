@@ -7,6 +7,8 @@ import {
   passwordsMatch,
   required,
   symbolsName,
+  startDate,
+  endDate,
 } from './validators';
 
 export const BOUNDARY = {
@@ -23,8 +25,10 @@ export const VALIDATION_RULES = {
   BIRTH_DAY: [required, minLength, maxLength, minBirthday, maxBirthday],
   CONFIRM_PASSWORD: [required, minLength, maxLength, passwordsMatch],
   EMAIL: [required, minLength, maxLength, email],
+  END_DAY: [required, endDate],
   FIRST_NAME: [required, minLengthName, maxLength, symbolsName],
   LAST_NAME: [required, minLengthName, maxLength, symbolsName],
   PASSWORD: [required, minLength, maxLength],
+  START_DAY: [required, startDate],
   USERNAME: [required, minLengthName, maxLength],
 };

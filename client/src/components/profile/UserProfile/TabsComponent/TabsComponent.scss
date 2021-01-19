@@ -12,7 +12,7 @@
     margin-left: 0.8em !important;
   }
 
-  ul[class*=tab-list] {
+  ul[class*='tab-list'] {
     font-size: 14px;
   }
 
@@ -38,7 +38,7 @@
     padding-top: 0.5em;
   }
 
-  ul[class*=tab-list] {
+  ul[class*='tab-list'] {
     font-size: 13px;
   }
 
@@ -62,7 +62,7 @@
     padding-top: 0.5em;
   }
 
-  ul[class*=tab-list] {
+  ul[class*='tab-list'] {
     font-size: 12px;
   }
 
@@ -78,7 +78,7 @@
     padding-top: 0.5em;
   }
 
-  ul[class*=tab-list] {
+  ul[class*='tab-list'] {
     font-size: 10px;
   }
 
@@ -98,7 +98,7 @@
     padding-top: 0.5em;
   }
 
-  ul[class*=tab-list] {
+  ul[class*='tab-list'] {
     font-size: 9px;
   }
 
@@ -118,12 +118,12 @@
   margin: -2px;
   margin-left: -1.85em;
 
-  ul[class*=tab-list] {
+  ul[class*='tab-list'] {
     border: none;
     width: 100%;
   }
 
-  li[class*=react-tabs] {
+  li[class*='react-tabs'] {
     border: 1px solid lightgray;
     border-radius: 0;
     margin: 0.3em 0 0 0 !important;
@@ -131,7 +131,7 @@
     top: -0.2em;
   }
 
-  li[aria-selected*=true] {
+  li[aria-selected*='true'] {
     background-color: lightgray;
 
     &::after {
@@ -192,5 +192,9 @@
 
   .TabsItemCol {
     color: gray;
+  }
+
+  .TabsItemValue {
+    margin-left: 5px;
   }
 }
