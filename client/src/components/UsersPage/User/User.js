@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
-import OwnChatButton from '../../profile/UserProfile/OwnChat';
+import OwnChatButton from '../../profile/UserProfile/OwnChat/OwnChat';
 import { setUserData } from '../../../actions/profile';
 import textData from '../../../utils/lib/languages.json';
 
@@ -39,7 +39,7 @@ class User extends React.Component {
       <>
         <div className={s.userContainer}>
           <div onClick={() => this.toUserProfile(id)}>
-            <Link to={`/profile${id}`}>
+            <Link to={`/profile${id}`} className={s.Link}>
               {avatar ? (
                 <img
                   className={s.UsersAvatar}
