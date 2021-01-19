@@ -29,7 +29,7 @@ class UserSearchPanel extends Component {
             placeholder="Search..."
             onChange={event => this.handleOnInputChange(event.target.value)}
           />
-          <SearchIcon fontSize="large" />
+          <SearchIcon fontSize="large" className={s.iconInput} />
         </div>
       </div>
     );

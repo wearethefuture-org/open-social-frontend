@@ -1,54 +1,59 @@
 @media (max-width: 1024px) {
-  ul[class*=tab-list] {
-    width: 22em;
-    font-size: 18px;
-  }
-
-  .Edit,
-  .Bell,
-  .Cog {
-    float: right;
-    font-size: 18px !important;
-  }
-
   .IconsWrapper {
     position: absolute;
-    margin: 0 0 0 22em !important;
+    right: 0;
+    top: -2px;
   }
 }
 
 @media (max-width: 768px) {
   .TabsWrapper {
     padding-top: 0.5em;
-    margin-left: 0.5em !important;
+    margin-left: 0.8em !important;
   }
 
   ul[class*=tab-list] {
-    width: 22em;
     font-size: 14px;
   }
 
   .IconsWrapper {
     position: absolute;
-    margin: 0 0 0 19em !important;
+    top: 4px;
+    right: 0;
+  }
+}
+
+@media (min-width: 500px) {
+  .TabsItemRow {
+    display: flex;
+  }
+
+  .TabsItemCol {
+    width: 30%;
   }
 }
 
 @media (max-width: 500px) {
   .TabsWrapper {
     padding-top: 0.5em;
-    margin-left: 0 !important;
   }
 
   ul[class*=tab-list] {
-    width: 22em;
     font-size: 13px;
-    margin-left: 1em;
   }
 
   .IconsWrapper {
     position: absolute;
-    margin: 0 0 0 17em !important;
+    right: 0;
+    top: -44px;
+  }
+
+  .TabsItemRow {
+    display: block;
+  }
+
+  .TabsItemCol {
+    width: 100%;
   }
 }
 
@@ -58,32 +63,33 @@
   }
 
   ul[class*=tab-list] {
-    width: 22em;
     font-size: 12px;
-    margin-left: 1em;
   }
 
   .IconsWrapper {
     position: absolute;
-    margin: 0.1em 0 0 16em !important;
+    right: 0;
+    top: -32px;
   }
 }
 
 @media (max-width: 360px) {
   .TabsWrapper {
     padding-top: 0.5em;
-    margin-left: 0 !important;
   }
 
   ul[class*=tab-list] {
-    width: 22em;
-    font-size: 11px;
-    margin-left: 1em;
+    font-size: 10px;
   }
 
   .IconsWrapper {
     position: absolute;
-    margin: 0.2em 0 0 16em !important;
+    right: 0;
+    top: -38px;
+  }
+
+  .TabPanel {
+    font-size: 1.2rem;
   }
 }
 
@@ -93,32 +99,28 @@
   }
 
   ul[class*=tab-list] {
-    width: 23em;
     font-size: 9px;
-    margin-left: 1em;
-  }
-
-  .Edit,
-  .Bell,
-  .Cog {
-    float: right;
-    font-size: 16px !important;
   }
 
   .IconsWrapper {
     position: absolute;
-    margin: 0.2em 0 0 16em !important;
+    right: 0;
+    top: -37px;
+  }
+
+  .TabPanel {
+    font-size: 1.2rem;
   }
 }
 
 .TabsWrapper {
-  min-width: 20em;
   padding: 0 0.5em 0 -0.5em;
   margin: -2px;
   margin-left: -1.85em;
 
   ul[class*=tab-list] {
     border: none;
+    width: 100%;
   }
 
   li[class*=react-tabs] {
@@ -147,22 +149,21 @@
 
   .IconsWrapper {
     float: right;
-    margin-top: 2.6em;
+    margin: 8px 25px 0 0;
   }
 
-  .Bell {
-    margin-right: 2em !important;
+  .hidden {
+    display: none;
   }
 
   .Edit,
   .Bell,
   .Cog {
-    float: right;
+    display: inline-block;
     border: 0 !important;
-    margin: -1.7em 0 0 1em;
-    padding-right: 1.2em;
+    margin: 0 0 0 1em;
     list-style-type: none;
-    font-size: 20px;
+    font-size: 1.7rem;
     color: gray !important;
 
     &:hover {
@@ -187,11 +188,9 @@
 
   .TabsItemRow {
     padding: 0.3em 0 0.3em 0;
-    display: flex;
   }
 
   .TabsItemCol {
     color: gray;
-    width: 30%;
   }
 }
