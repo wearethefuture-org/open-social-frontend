@@ -103,12 +103,16 @@ function OwnChatButton({ user: { id }, createChat, nameButton, lang }) {
   );
 }
 
+OwnChatButton.defaultProps = {
+  nameButton: '',
+};
+
 OwnChatButton.propTypes = {
   createChat: PropTypes.func.isRequired,
   lang: PropTypes.string.isRequired,
-  nameButton: PropTypes.string.isRequired,
+  nameButton: PropTypes.string,
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
   }).isRequired,
 };
 

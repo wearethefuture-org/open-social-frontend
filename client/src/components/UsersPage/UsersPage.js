@@ -5,23 +5,22 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import s from './UsersPage.scss';
-import { getUsersData } from '../../actions/users';
 import User from './User/User';
 import Loader from '../Loader/Loader';
 import UserSearchPanel from './UserSearchPanel/UserSearchPanel';
-import textData from '../../utils/lib/languages';
+import textData from '../../utils/lib/languages.json';
 
 class UsersPage extends React.Component {
   static propTypes = {
     data: PropTypes.arrayOf(
       PropTypes.shape({
         firstName: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+          .isRequired,
         lastName: PropTypes.string.isRequired,
       }),
     ).isRequired,
     error: PropTypes.string.isRequired,
-    getUsersData: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     lang: PropTypes.string.isRequired,
   };
@@ -50,13 +49,13 @@ class UsersPage extends React.Component {
   }
 
   handlePageClick = e => {
-    const selectedPage = e.selected;
-    const offset = selectedPage * this.state.perPage;
+    const currentPage = e.selected;
+    const offset = currentPage * this.state.perPage;
 
     this.setState(
       {
+        currentPage,
         offset,
-        selectedPage,
       },
       () => {
         this.receivedData();
@@ -86,10 +85,10 @@ class UsersPage extends React.Component {
     return (
       <div className={s.wrapper}>
         <div className={s.heading}>
-          <div>
+          <div className={s.title}>
             <h3>{usersPage.title[lang]}</h3>
           </div>
-          <div>
+          <div className={s.containerSearch}>
             <UserSearchPanel />
           </div>
         </div>
@@ -119,5 +118,4 @@ export default connect(
     isLoading,
     lang,
   }),
-  { getUsersData },
 )(withStyles(bootstrap, s)(React.memo(UsersPage)));
