@@ -56,6 +56,13 @@ const routes = [
       },
       {
         load: () =>
+          import(
+            /* webpackChunkName: 'analytics' */ '../components/AnalyticProfile'
+          ),
+        path: '/analytics',
+      },
+      {
+        load: () =>
           import(/* webpackChunkName: 'about' */ '../components/about'),
         path: '/about',
       },
@@ -88,4 +95,3 @@ const routes = [
 ];
 
 export default routes;
-

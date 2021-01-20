@@ -1,9 +1,14 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import reactStyle from 'react-tabs/style/react-tabs.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCog, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBell,
+  faCog,
+  faUserEdit,
+  faChartBar,
+} from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -22,14 +27,28 @@ const TabsComponent = ({
   birthdayDate,
   id,
   privateUser,
+  createdAt,
+  countChats,
+  countMessages,
 }) => {
   const lang = useSelector(store => store.menu.lang);
   // if id != our id AND privateUser on this user === true return false else true
   const publicStatus = (!privateUser || id === apiClient.userId());
   const {
-    profilePage: { tabs, aboutData },
+    profilePage: { tabs, aboutData, analyticsData },
   } = textData;
   const dataObject = {
+    analytics: [
+      {
+        column: `${analyticsData.registrationDate[lang]}`,
+        value: `${moment(createdAt).format('MM-DD-YYYY')}`,
+      },
+      { column: `${analyticsData.сreatedСhats[lang]}`, value: `${countChats}` },
+      {
+        column: `${analyticsData.сreatedMessages[lang]}`,
+        value: `${countMessages}`,
+      },
+    ],
     userInformation: [
       { column: `${aboutData.username[lang]}`, value: `${userName}` },
       { column: `${aboutData.email[lang]}`, value: `${email}` },
@@ -39,68 +58,86 @@ const TabsComponent = ({
       },
     ],
   };
+  
+    const data = item => {
+    return (
+      <Container key={item.column}>
+        <div className={styles.TabsItemRow}>
+          <div className={styles.TabsItemCol}>{item.column}:</div>
+          <div className={styles.TabsItemValue}>{item.value}</div>
+        </div>
+      </Container>
+    );
+  };
 
 
   if (publicStatus) {
     return (
       <>
         <Tabs className={styles.TabsWrapper}>
-          <TabList>
-            <div>
-              <Tab id="aboutMe">{tabs.about[lang]}</Tab>
-              {/* <Tab id="additionalInfo">{tabs.additional[lang]}</Tab>
-            <Tab id="credits">{tabs.credits[lang]}</Tab> */}
-              <div className={styles.IconsWrapper}>
-                {id === apiClient.userId() && (
-                  <>
-                    <span className={styles.Edit}>
-                      <Link to="/edit-profile">
-                        <FontAwesomeIcon icon={faUserEdit} />
-                      </Link>
-                    </span>
-                    {/* <span className={styles.Bell}>
+        <TabList>
+          <div>
+            <Tab id="aboutMe">{tabs.about[lang]}</Tab>
+            <Tab id="additionalInfo" className={styles.hidden}>
+              {tabs.additional[lang]}
+            </Tab>
+            <Tab id="credits" className={styles.hidden}>
+              {tabs.credits[lang]}
+            </Tab>
+            <Tab id="analytics">{tabs.analytics[lang]}</Tab>
+            <div className={styles.IconsWrapper}>
+              {id === apiClient.userId() && (
+                <>
+                  <span className={styles.Edit}>
+                    <Link to="/edit-profile">
+                      <FontAwesomeIcon icon={faUserEdit} />
+                    </Link>
+                  </span>
+                  <span className={(styles.Bell, styles.hidden)}>
                     <FontAwesomeIcon icon={faBell} />
                   </span>
-                  <span className={styles.Cog}>
+                  <span className={(styles.Cog, styles.hidden)}>
                     <FontAwesomeIcon icon={faCog} />
-                  </span> */}
-                  </>
-                )}
-              </div>
+                  </span>
+                </>
+              )}
             </div>
-          </TabList>
-          <TabPanel className={styles.TabPanel}>
-            <h4>{` ${firstName} ${lastName}`}</h4>
-            {dataObject.userInformation.map(item => {
-              return (
-                <Container key={item.column}>
-                  <div className={styles.TabsItemRow}>
-                    <div className={styles.TabsItemCol}>{item.column}:</div>
-                    <div>{item.value}</div>
-                  </div>
-                </Container>
-              );
-            })}
-          </TabPanel>
-          <TabPanel className={styles.TabPanel}>
-            <h4>Additional info</h4>
-          </TabPanel>
-          <TabPanel className={styles.TabPanel}>
-            <h4>Credits</h4>
-          </TabPanel>
-        </Tabs>
-      </>
-    );
-  }
-  return <ProfilePrivate />;
-};
+          </div>
+        </TabList>
+        <TabPanel className={styles.TabPanel}>
+          <h4>{` ${firstName} ${lastName}`}</h4>
+          {dataObject.userInformation.map(item => {
+            return data(item);
+          })}
+        </TabPanel>
+        <TabPanel className={styles.TabPanel}>
+          <h4>Additional info</h4>
+        </TabPanel>
+        <TabPanel className={styles.TabPanel}>
+          <h4>Credits</h4>
+        </TabPanel>
+        <TabPanel className={styles.TabPanel}>
+          {dataObject.analytics.map(item => {
+            return data(item);
+          })}
+        </TabPanel>
+      </Tabs>
+    </>
+  );
+}
+return <ProfilePrivate />;
 
 TabsComponent.defaultProps = {
   birthdayDate: null,
+  countChats: null,
+  countMessages: null,
 };
 
 TabsComponent.propTypes = {
   birthdayDate: PropTypes.string,
+  countChats: PropTypes.number,
+  countMessages: PropTypes.number,
+  createdAt: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -120,9 +157,14 @@ export default connect(
       birthdayDate,
       id,
       privateUser,
+      createdAt,
+      analytics: { countChats, countMessages },
     },
   }) => ({
     birthdayDate,
+    countChats,
+    countMessages,
+    createdAt,
     email,
     firstName,
     id,

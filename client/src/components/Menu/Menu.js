@@ -15,6 +15,7 @@ import login from '../../assets/login.svg';
 
 import chats from '../../assets/chats.svg';
 import users from '../../assets/users.svg';
+import analytics from '../../assets/analytics.svg';
 
 const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
   const { menuButtons } = textData;
@@ -25,6 +26,13 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
       name: 'about',
       path: 'about',
       text: menuButtons.about.label[lang],
+      type: 'button',
+    },
+    {
+      icon: analytics,
+      name: 'analytics',
+      path: 'analytics',
+      text: menuButtons.analytics.label[lang],
       type: 'button',
     },
     {

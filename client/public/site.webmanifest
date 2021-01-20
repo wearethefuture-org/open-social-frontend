@@ -1,10 +1,11 @@
 {
-    "icons": [
-      {
-        "src": "favicon.ico",
-        "sizes": "128x128",
-        "type": "image/vnd.microsoft.icon"
-      }
-    ],
-    "start_url": "/profile"
-  }
+  "icons": [{
+  "src": "/favicon.svg",
+  "sizes": "16x16",
+  "type": "image/svg+xml"
+}, {
+  "src": "/apple-touch-icon.png",
+  "sizes": "16x16",
+  "type": "image/png"
+}]
+}

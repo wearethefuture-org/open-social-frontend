@@ -29,4 +29,5 @@ yarn-error.log*
 .DS_Store
 **/*.exe
 
-package-lock.json
+client/package-lock.json
+client/yarn.lock
