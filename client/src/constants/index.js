@@ -46,6 +46,6 @@ export const ANALYTICS_DATA_LOADING_DATA_FAILURE =
   'ANALYTICS_DATA_LOADING_DATA_FAILURE';
 export const SET_FILTER_ANALYTIC = 'SET_FILTER_DATE';
 
-// export const apiURL = 'https://social.waf.com.ua';
+export const apiURL = 'https://social.waf.com.ua';
 // export const apiURL = "http://178.20.156.208:4000";
-export const apiURL = 'http://localhost:4000';
+// export const apiURL = 'http://localhost:4000';

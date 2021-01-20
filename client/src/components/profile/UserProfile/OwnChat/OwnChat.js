@@ -15,7 +15,7 @@ import history from '../../../../history';
 import textData from '../../../../utils/lib/languages.json';
 
 // eslint-disable-next-line no-shadow
-function OwnChatButton({ user: { id }, createChat, nameButton, lang }) {
+function OwnChatButton({ user: { id }, createChat, nameButton, lang, partner_id }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [descpiption, setDescription] = useState('');
@@ -31,6 +31,7 @@ function OwnChatButton({ user: { id }, createChat, nameButton, lang }) {
         descpiption,
         name,
         owner_id: id,
+        partner_id
       };
       // eslint-disable-next-line promise/catch-or-return
       createChat(parameters).then(() => history.push('/chats'));
