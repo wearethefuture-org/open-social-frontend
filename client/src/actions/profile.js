@@ -5,6 +5,7 @@ import {
   PROFILE_DATA_LOADING_DATA_FAILURE,
   apiURL,
   GET_USER_DATA,
+  GET_USER_ANALYTICS,
 } from '../constants';
 
 const profileDataSuccess = payload => ({
@@ -26,8 +27,25 @@ const userData = payload => ({
   type: GET_USER_DATA,
 });
 
+const analyticsData = payload => ({
+  payload,
+  type: GET_USER_ANALYTICS,
+});
+
 export const setUserData = id => dispatch => {
   dispatch(userData(id));
+};
+
+// eslint-disable-next-line unicorn/consistent-function-scoping
+export const getUserAnalytics = id => async dispatch => {
+  try {
+    const { data } = await apiClient.get(
+      `${apiURL}/api/v1/users/analytics/${id}`,
+    );
+    dispatch(analyticsData(data));
+  } catch (error) {
+    dispatch(profileDataFailure(error.message));
+  }
 };
 
 export const getUserData = id => async dispatch => {
@@ -35,6 +53,7 @@ export const getUserData = id => async dispatch => {
   try {
     const { data } = await apiClient.get(`${apiURL}/api/v1/users/${id}`);
     dispatch(profileDataSuccess(data));
+    dispatch(getUserAnalytics(id));
   } catch (error) {
     dispatch(profileDataFailure(error.message));
   }

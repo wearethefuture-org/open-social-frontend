@@ -1,5 +1,4 @@
 /* eslint-disable promise/prefer-await-to-then */
-/* eslint-disable react-perf/jsx-no-new-function-as-prop */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -9,13 +8,14 @@ import PropTypes from 'prop-types';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import { createChat } from '../../../actions/chats';
-import styles from './ProfileButton.scss';
-import history from '../../../history';
-import textData from '../../../utils/lib/languages.json';
+import { createChat } from '../../../../actions/chats';
+import s from './OwnChat.scss';
+import styles from '../ProfileButton/ProfileButton.scss';
+import history from '../../../../history';
+import textData from '../../../../utils/lib/languages.json';
 
 // eslint-disable-next-line no-shadow
-function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
+function OwnChatButton({ user: { id }, createChat, nameButton, lang, partner_id }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -31,14 +31,14 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
         description,
         name,
         owner_id: id,
-        partner_id: partnerId,
+        partner_id
       };
       // eslint-disable-next-line promise/catch-or-return
       createChat(parameters).then(() => history.push('/chats'));
       handleClose();
     }
   };
-  // eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
+
   const modalStyle = {
     margin: '20px',
   };
@@ -51,7 +51,7 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
         onClick={handleShow}
       >
         <FontAwesomeIcon className={styles.Icon} icon={faPlus} />
-        {nameBtn}
+        {nameButton}
       </Button>
     );
   };
@@ -72,9 +72,9 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
           <Route exact path="/users" component={UserOwnChatButton} />
         </Switch>
       </BrowserRouter>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{ownChat.title[lang]}</Modal.Title>
+          <Modal.Title as="h3">{ownChat.title[lang]}</Modal.Title>
         </Modal.Header>
         <Form.Group style={modalStyle}>
           <Form.Control
@@ -95,7 +95,7 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
           />
         </Form.Group>
         <Modal.Footer>
-          <Button variant="primary" onClick={onSubmit}>
+          <Button size="lg" variant="primary" onClick={onSubmit}>
             {ownChat.submitText[lang]}
           </Button>
         </Modal.Footer>
@@ -106,11 +106,12 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
 
 OwnChatButton.propTypes = {
   createChat: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/require-default-props
+  lang: PropTypes.string.isRequired,
+  nameButton: PropTypes.string.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number,
   }),
-  partnerId: PropTypes.number.isRequired,
+  partner_id: PropTypes.number.isRequired,
   lang: PropTypes.string.isRequired,
 };
 
@@ -124,4 +125,4 @@ OwnChatButton.whyDidYouRender = true;
 export default connect(
   mapStateToProps,
   { createChat },
-)(withStyles(styles)(React.memo(OwnChatButton)));
+)(withStyles(styles, s)(React.memo(OwnChatButton)));

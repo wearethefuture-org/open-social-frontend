@@ -1,5 +1,6 @@
 .form {
-  width: 400px;
+  width: 70%;
+  max-width: 400px;
   margin-top: 70px;
 }
 
@@ -18,19 +19,25 @@
   color: #aeaeae;
 }
 
-div[class="input-group"] {
+div[class='input-group'] {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
 }
 
-div[class="input-group-prepend"] {
+div[class='input-group-prepend'] {
   width: 15%;
   float: left;
   display: inline;
+  height: 33px;
 }
 
-input[name="userName"] {
+span[class=input-group-text] {
+  height: 100%;
+  justify-content: center;
+}
+
+input[name='userName'] {
   width: 85%;
   display: inline;
 }
