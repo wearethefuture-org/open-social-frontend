@@ -17,6 +17,7 @@ import styles from './TabsComponent.scss';
 import Link from '../../../Link';
 import apiClient from '../../../../utils/axios-with-auth';
 import textData from '../../../../utils/lib/languages.json';
+import ProfilePrivate from '../ProfilePrivate/ProfilePrivate';
 
 const TabsComponent = ({
   firstName,
@@ -25,11 +26,14 @@ const TabsComponent = ({
   email,
   birthdayDate,
   id,
+  privateUser,
   createdAt,
   countChats,
   countMessages,
 }) => {
   const lang = useSelector(store => store.menu.lang);
+  // if id != our id AND privateUser on this user === true return false else true
+  const publicStatus = (!privateUser || id === apiClient.userId());
   const {
     profilePage: { tabs, aboutData, analyticsData },
   } = textData;
@@ -54,8 +58,8 @@ const TabsComponent = ({
       },
     ],
   };
-
-  const data = item => {
+  
+    const data = item => {
     return (
       <Container key={item.column}>
         <div className={styles.TabsItemRow}>
@@ -66,9 +70,11 @@ const TabsComponent = ({
     );
   };
 
-  return (
-    <>
-      <Tabs className={styles.TabsWrapper}>
+
+  if (publicStatus) {
+    return (
+      <>
+        <Tabs className={styles.TabsWrapper}>
         <TabList>
           <div>
             <Tab id="aboutMe">{tabs.about[lang]}</Tab>
@@ -118,7 +124,8 @@ const TabsComponent = ({
       </Tabs>
     </>
   );
-};
+}
+return <ProfilePrivate />;
 
 TabsComponent.defaultProps = {
   birthdayDate: null,
@@ -135,6 +142,7 @@ TabsComponent.propTypes = {
   firstName: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   lastName: PropTypes.string.isRequired,
+  privateUser: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
 };
 
@@ -148,6 +156,7 @@ export default connect(
       email,
       birthdayDate,
       id,
+      privateUser,
       createdAt,
       analytics: { countChats, countMessages },
     },
@@ -160,6 +169,7 @@ export default connect(
     firstName,
     id,
     lastName,
+    privateUser,
     userName,
   }),
 )(withStyles(styles, reactStyle)(React.memo(TabsComponent)));
