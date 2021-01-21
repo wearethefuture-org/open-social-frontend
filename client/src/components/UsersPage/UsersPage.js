@@ -75,13 +75,13 @@ class UsersPage extends React.Component {
     if (error) {
       return <p className="mb-0">{error}</p>;
     }
-    if (isLoading) {
-      return (
-        <div>
-          <Loader />
-        </div>
-      );
-    }
+    // if (isLoading) {
+    //   return (
+    //     <div>
+    //       <Loader />
+    //     </div>
+    //   );
+    // }
     return (
       <div className={s.wrapper}>
         <div className={s.heading}>

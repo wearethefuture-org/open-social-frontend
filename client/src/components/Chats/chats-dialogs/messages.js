@@ -4,13 +4,15 @@ import Message from './message';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import style from './messages.module.scss';
 import ScrollToBottom from 'react-scroll-to-bottom';
-import { connect } from 'react-redux';
+import {connect, useSelector} from 'react-redux';
+import textData from '../../../utils/lib/languages.json'
 
 function Messages({ chat: { messages } }) {
-	if (!messages.length) {
+  const lang = useSelector(store => store.menu.lang);
+  if (!messages.length) {
 		return (
 			<div className={style.firstMessage}>
-				<span>No messages, type a first message</span>
+				<span>{textData.chatsPage.dialog.noMessageTitle[lang]}</span>
 			</div>
 		);
 	}

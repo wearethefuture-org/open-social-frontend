@@ -18,7 +18,7 @@ import textData from '../../../../utils/lib/languages.json';
 function OwnChatButton({ user: { id }, createChat, nameButton, lang, partner_id }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
-  const [descpiption, setDescription] = useState('');
+  const [description, setDescription] = useState('');
   const {
     profilePage: { ownChat },
   } = textData;
@@ -28,7 +28,7 @@ function OwnChatButton({ user: { id }, createChat, nameButton, lang, partner_id 
     // eslint-disable-next-line unicorn/explicit-length-check
     if (name.length) {
       const parameters = {
-        descpiption,
+        description,
         name,
         owner_id: id,
         partner_id
@@ -90,7 +90,7 @@ function OwnChatButton({ user: { id }, createChat, nameButton, lang, partner_id 
             rows="3"
             name="description"
             placeholder={ownChat.descriptionInput[lang]}
-            value={descpiption}
+            value={description}
             onChange={event => setDescription(event.target.value)}
           />
         </Form.Group>
@@ -114,6 +114,8 @@ OwnChatButton.propTypes = {
   nameButton: PropTypes.string,
   user: PropTypes.shape({
     id: PropTypes.number,
+  }),
+  partner_id: PropTypes.number.isRequired,
   }).isRequired,
 };
 

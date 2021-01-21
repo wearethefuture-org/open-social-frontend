@@ -66,7 +66,7 @@ class User extends React.Component {
               </button>
             </div>
             <div>
-              <OwnChatButton partner_id={id} />
+              <OwnChatButton partnerId={id} />
             </div>
           </div>
         </div>

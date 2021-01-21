@@ -1,6 +1,5 @@
 .blockUserAdmin {
   margin-top: 20px;
-  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,4 +15,18 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.closeIcon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .closeIcon {
+    display: block;
+    align-self: flex-start;
+    font-size: 3rem;
+    margin-left: 2rem;
+  }
 }

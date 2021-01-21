@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
 import dumpImg from '../../../assets/chat/noImg.png';
+import { hideMobileListUsers } from "../../../actions/chats";
+import CloseIcon from '@material-ui/icons/Close';
 
 const ChatsBlockUserAdmin = ({
   firstName,
@@ -14,10 +16,11 @@ const ChatsBlockUserAdmin = ({
   avatar,
   error,
   isLoading,
+  hideMobileListUsers,
 }) => {
   if (error) {
-    return <p className="mb-0">{error}</p>;
-  }
+    return <p className="mb-0">{error.message}</p>;
+  };
 
 	if (isLoading) {
 		return (
@@ -25,16 +28,16 @@ const ChatsBlockUserAdmin = ({
 				<Loader />
 			</div>
 		);
-	}
+	};
+
 	return (
 		<div className={style.blockUserAdmin}>
-			<div>
-				<Avatar className={style.avatar} alt={userName}  />
-				{/* src={`http://${avatar.url}`} */}
-				<div>
-					<h4>{` ${firstName} ${lastName}`}</h4>
-				</div>
-			</div>
+      <CloseIcon className={style.closeIcon} onClick={hideMobileListUsers} />
+      <Avatar className={style.avatar} alt={userName} />
+      {/* src={`http://${avatar.url}`} */}
+      <div>
+        <h4>{` ${firstName} ${lastName}`}</h4>
+      </div>
 		</div>
 	);
 };
@@ -49,6 +52,7 @@ ChatsBlockUserAdmin.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   lastName: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
+  hideMobileListUsers: PropTypes.func.isRequired,
 };
 
 ChatsBlockUserAdmin.whyDidYouRender = true;
@@ -64,4 +68,5 @@ export default connect(
     lastName,
     userName,
   }),
+  { hideMobileListUsers },
 )(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
