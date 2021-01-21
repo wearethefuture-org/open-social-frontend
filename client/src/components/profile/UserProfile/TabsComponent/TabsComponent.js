@@ -33,7 +33,7 @@ const TabsComponent = ({
 }) => {
   const lang = useSelector(store => store.menu.lang);
   // if id != our id AND privateUser on this user === true return false else true
-  const publicStatus = (!privateUser || id === apiClient.userId());
+  const publicStatus = !privateUser || id === apiClient.userId();
   const {
     profilePage: { tabs, aboutData, analyticsData },
   } = textData;
@@ -58,8 +58,8 @@ const TabsComponent = ({
       },
     ],
   };
-  
-    const data = item => {
+
+  const data = item => {
     return (
       <Container key={item.column}>
         <div className={styles.TabsItemRow}>
@@ -70,62 +70,62 @@ const TabsComponent = ({
     );
   };
 
-
   if (publicStatus) {
     return (
       <>
         <Tabs className={styles.TabsWrapper}>
-        <TabList>
-          <div>
-            <Tab id="aboutMe">{tabs.about[lang]}</Tab>
-            <Tab id="additionalInfo" className={styles.hidden}>
-              {tabs.additional[lang]}
-            </Tab>
-            <Tab id="credits" className={styles.hidden}>
-              {tabs.credits[lang]}
-            </Tab>
-            <Tab id="analytics">{tabs.analytics[lang]}</Tab>
-            <div className={styles.IconsWrapper}>
-              {id === apiClient.userId() && (
-                <>
-                  <span className={styles.Edit}>
-                    <Link to="/edit-profile">
-                      <FontAwesomeIcon icon={faUserEdit} />
-                    </Link>
-                  </span>
-                  <span className={(styles.Bell, styles.hidden)}>
-                    <FontAwesomeIcon icon={faBell} />
-                  </span>
-                  <span className={(styles.Cog, styles.hidden)}>
-                    <FontAwesomeIcon icon={faCog} />
-                  </span>
-                </>
-              )}
+          <TabList>
+            <div>
+              <Tab id="aboutMe">{tabs.about[lang]}</Tab>
+              <Tab id="additionalInfo" className={styles.hidden}>
+                {tabs.additional[lang]}
+              </Tab>
+              <Tab id="credits" className={styles.hidden}>
+                {tabs.credits[lang]}
+              </Tab>
+              <Tab id="analytics">{tabs.analytics[lang]}</Tab>
+              <div className={styles.IconsWrapper}>
+                {id === apiClient.userId() && (
+                  <>
+                    <span className={styles.Edit}>
+                      <Link to="/edit-profile">
+                        <FontAwesomeIcon icon={faUserEdit} />
+                      </Link>
+                    </span>
+                    <span className={(styles.Bell, styles.hidden)}>
+                      <FontAwesomeIcon icon={faBell} />
+                    </span>
+                    <span className={(styles.Cog, styles.hidden)}>
+                      <FontAwesomeIcon icon={faCog} />
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        </TabList>
-        <TabPanel className={styles.TabPanel}>
-          <h4>{` ${firstName} ${lastName}`}</h4>
-          {dataObject.userInformation.map(item => {
-            return data(item);
-          })}
-        </TabPanel>
-        <TabPanel className={styles.TabPanel}>
-          <h4>Additional info</h4>
-        </TabPanel>
-        <TabPanel className={styles.TabPanel}>
-          <h4>Credits</h4>
-        </TabPanel>
-        <TabPanel className={styles.TabPanel}>
-          {dataObject.analytics.map(item => {
-            return data(item);
-          })}
-        </TabPanel>
-      </Tabs>
-    </>
-  );
-}
-return <ProfilePrivate />;
+          </TabList>
+          <TabPanel className={styles.TabPanel}>
+            <h4>{` ${firstName} ${lastName}`}</h4>
+            {dataObject.userInformation.map(item => {
+              return data(item);
+            })}
+          </TabPanel>
+          <TabPanel className={styles.TabPanel}>
+            <h4>Additional info</h4>
+          </TabPanel>
+          <TabPanel className={styles.TabPanel}>
+            <h4>Credits</h4>
+          </TabPanel>
+          <TabPanel className={styles.TabPanel}>
+            {dataObject.analytics.map(item => {
+              return data(item);
+            })}
+          </TabPanel>
+        </Tabs>
+      </>
+    );
+  }
+  return <ProfilePrivate />;
+};
 
 TabsComponent.defaultProps = {
   birthdayDate: null,
