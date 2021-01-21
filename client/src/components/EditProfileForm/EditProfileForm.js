@@ -4,45 +4,51 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Field, reduxForm } from 'redux-form';
 import { Button, InputGroup, Row, Col, Form } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import moment from 'moment';
 import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import s from './EditProfileForm.scss';
 import Link from '../Link';
 import apiClient from '../../utils/axios-with-auth';
+import textData from '../../utils/lib/languages.json';
 
-const EditProfileForm = ({ handleSubmit, submitText }) => {
+const EditProfileForm = ({ handleSubmit }) => {
+  const lang = useSelector(store => store.menu.lang);
+  const {
+    editProfilePage: { inputs },
+  } = textData;
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group as={Row}>
-        <Form.Label column={4}>First name:</Form.Label>
+        <Form.Label column={4}>{inputs.firstName.label[lang]}</Form.Label>
         <Col sm={8}>
           <Field
             name="firstName"
             component={FieldInput}
             type="text"
-            placeholder="Enter your new first name"
+            placeholder={inputs.firstName.placeholder[lang]}
             description="First name"
             validate={VALIDATION_RULES.FIRST_NAME}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
-        <Form.Label column={4}>Last name:</Form.Label>
+        <Form.Label column={4}>{inputs.lastName.label[lang]}</Form.Label>
         <Col sm={8}>
           <Field
             name="lastName"
             component={FieldInput}
             type="text"
-            placeholder="Enter your new last name"
+            placeholder={inputs.lastName.placeholder[lang]}
             description="Last name"
             validate={VALIDATION_RULES.LAST_NAME}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
-        <Form.Label column={4}>Username:</Form.Label>
+        <Form.Label column={4}>{inputs.userName.label[lang]}</Form.Label>
         <Col sm={8}>
           <InputGroup>
             <InputGroup.Prepend>
@@ -52,7 +58,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
               name="userName"
               component={FieldInput}
               type="text"
-              placeholder="Enter your new userName"
+              placeholder={inputs.userName.placeholder[lang]}
               description="Username"
               required
               validate={VALIDATION_RULES.USERNAME}
@@ -61,13 +67,13 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
-        <Form.Label column={4}>Email</Form.Label>
+        <Form.Label column={4}>{inputs.email.label[lang]}</Form.Label>
         <Col sm={8}>
           <Field
             name="email"
             component={FieldInput}
             type="email"
-            placeholder="Enter your new email"
+            placeholder={inputs.email.placeholder[lang]}
             description="Email"
             validate={VALIDATION_RULES.EMAIL}
           />
@@ -75,12 +81,12 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
       </Form.Group>
       <div className={s.buttonClose}>
         <Link to={`/profile${apiClient.userId()}`}>
-          <Button variant="cancel">Cancel</Button>
+          <Button variant="cancel">{inputs.cancelButton[lang]}</Button>
         </Link>
       </div>
       <div className={s.buttonSave}>
         <Button variant="save" type="submit">
-          <div className={s.textSave}>{submitText || 'Submit'}</div>
+          <div className={s.textSave}>{inputs.submitButton[lang]}</div>
         </Button>
       </div>
     </Form>
@@ -89,7 +95,6 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
 
 EditProfileForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  submitText: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => {

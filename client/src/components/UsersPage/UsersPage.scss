@@ -1,3 +1,13 @@
+@media (max-width: 400px) {
+  .title {
+    display: none;
+  }
+
+  .containerSearch {
+    width: 100%;
+  }
+}
+
 .wrapper {
   width: 100%;
   max-width: 500px;
@@ -10,6 +20,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.title {
   padding-left: 35px;
 }
 
