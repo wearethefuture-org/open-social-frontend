@@ -30,9 +30,9 @@ export const getUsersData = () => async dispatch => {
   }
 };
 export const getUsersWithParams = ({ search }) => async dispatch => {
-  dispatch(userDataLoading({ search }));
+  dispatch(userDataLoading());
   try {
-    const data = await apiClient.get(
+    const { data } = await apiClient.get(
       `${apiURL}/api/v1/users?search=%${search}%`,
     );
     dispatch(userDataSuccess(data));
