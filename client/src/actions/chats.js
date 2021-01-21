@@ -62,17 +62,13 @@ const saveRecivedMessage = (payload) => ({
 	type: USER_CHAT_RECIVED_MESSAGE
 });
 
-export const showMobileListUsers = () => {
-  return {
-    type: SHOW_MOBILE_LIST_USERS,
-  };
-};
+export const showMobileListUsers = () => ({
+  type: SHOW_MOBILE_LIST_USERS,
+});
 
-export const hideMobileListUsers = () => {
-  return {
-    type: HIDE_MOBILE_LIST_USERS,
-  };
-};
+export const hideMobileListUsers = () => ({
+  type: HIDE_MOBILE_LIST_USERS,
+});
 
 // eslint-disable-next-line consistent-return
 
@@ -84,11 +80,7 @@ export const getUsersChatData = ({ take, skip, search, oldData }) => async (disp
 			skip,
 			search: search
 		});
-		if(oldData){
-      data = oldData.concat(data);
-    }
-    dispatch(userChatDataSuccess({ data }));
-    return data;
+    dispatch(userChatDataSuccess(oldData ? oldData.concat(data) : data));
 	} catch (error) {
     dispatch(userChatDataFailure(error.response.data.message));
 	}
