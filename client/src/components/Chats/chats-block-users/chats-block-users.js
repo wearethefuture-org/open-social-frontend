@@ -79,14 +79,6 @@ class ChatsBlockUsers extends Component {
           next={this.getChats}
           hasMore={hasMore}
           className={style.scrollMax}
-<<<<<<< HEAD
-=======
-          loader={
-            <h4 className={style.center}>
-              {textData.general.loadingPlaceholder[lang]}
-            </h4>
-          }
->>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
           endMessage={
             <p className={style.center}>
               <b>{textData.chatsPage.dialog.noMoreDialogs[lang]}</b>
@@ -124,12 +116,7 @@ class ChatsBlockUsers extends Component {
     const { dispatchGetUsersChatData } = this.props;
     const { data, error } = this.props;
     skip += take;
-<<<<<<< HEAD
     dispatchGetUsersChatData({ skip, take, oldData: data }).then(chats => {
-=======
-    // eslint-disable-next-line promise/catch-or-return
-    dispatchGetUsersChatData({ skip, take }).then(chats => {
->>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
       if (chats !== undefined) {
         this.setState({ hasMore: !!chats.length, skip });
       }

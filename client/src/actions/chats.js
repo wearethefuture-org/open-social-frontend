@@ -115,7 +115,6 @@ export const setChatData = (data) => (dispatch) => {
 
 export const createChat = parameters => async dispatch => {
 	dispatch(userChatDataLoading());
-	console.log(parameters)
 	try {
 		const { data } = await apiClient.post(`${apiURL}/api/v1/chats`, parameters);
 		dispatch(newChatDataSuccess(data));
