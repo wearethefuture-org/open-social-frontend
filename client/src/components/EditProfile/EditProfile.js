@@ -9,10 +9,12 @@ import EditProfileForm from '../EditProfileForm/EditProfileForm';
 import { editProfile } from '../../actions/profile';
 import history from '../../history';
 import apiClient from '../../utils/axios-with-auth';
+import textData from '../../utils/lib/languages.json';
 
 class EditProfilePage extends React.Component {
   static propTypes = {
     editProfile: PropTypes.func.isRequired,
+    lang: PropTypes.string.isRequired,
   };
 
   handleSubmit = async data => {
@@ -22,11 +24,16 @@ class EditProfilePage extends React.Component {
   };
 
   render() {
+    const { lang } = this.props;
+    const {
+      editProfilePage: { title },
+    } = textData;
+
     return (
       <div className={s.form}>
-        <h3 className={s.heading}>Edit profile page</h3>
+        <h3 className={s.heading}>{title[lang]}</h3>
         {process.env.BROWSER && (
-          <EditProfileForm onSubmit={this.handleSubmit} submitText="Save" />
+          <EditProfileForm onSubmit={this.handleSubmit} />
         )}
       </div>
     );
@@ -35,14 +42,8 @@ class EditProfilePage extends React.Component {
 EditProfilePage.whyDidYouRender = true;
 
 export default connect(
-  ({
-    userProfile: { firstName, lastName, userName, email, birthdayDate },
-  }) => ({
-    birthdayDate,
-    email,
-    firstName,
-    lastName,
-    userName,
+  ({ menu: { lang } }) => ({
+    lang,
   }),
   { editProfile },
 )(withStyles(bootstrap, s)(React.memo(EditProfilePage)));

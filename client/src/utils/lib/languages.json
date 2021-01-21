@@ -161,21 +161,21 @@
           "ru": "Имя"
         },
         "placeholder": {
-          "uk": "ваше ім'я",
-          "en": "first name",
-          "ru": "ваше имя"
+          "uk": "Ваше ім'я",
+          "en": "First name",
+          "ru": "Ваше имя"
         }
       },
       "lastName": {
         "label": {
-          "uk": "призвище",
-          "en": "last name",
-          "ru": "фамилия"
+          "uk": "Прізвище",
+          "en": "Last name",
+          "ru": "Фамилия"
         },
         "placeholder": {
-          "uk": "ваше  призвище",
-          "en": "last name",
-          "ru": "ваша фамилия"
+          "uk": "Ваше прізвище",
+          "en": "Last name",
+          "ru": "Ваша фамилия"
         }
       },
       "userName": {
@@ -185,9 +185,9 @@
           "ru": "Имя пользователя"
         },
         "placeholder": {
-          "uk": "ім'я користувача",
-          "en": "user name",
-          "ru": "имя пользователя"
+          "uk": "Ім'я користувача",
+          "en": "User name",
+          "ru": "Имя пользователя"
         }
       },
       "email": {
@@ -197,9 +197,9 @@
           "ru": "Електронная почта"
         },
         "placeholder": {
-          "uk": "введіть email",
-          "en": "enter email",
-          "ru": "введите email"
+          "uk": "Введіть email",
+          "en": "Enter email",
+          "ru": "Введите email"
         }
       },
       "birthdayDate": {
@@ -209,9 +209,9 @@
           "ru": "Дата рождения"
         },
         "placeholder": {
-          "uk": "дата народження",
-          "en": "birthday date",
-          "ru": "дата рождения"
+          "uk": "Дата народження",
+          "en": "Birthday date",
+          "ru": "Дата рождения"
         }
       },
       "password": {
@@ -221,9 +221,9 @@
           "ru": "Пароль"
         },
         "placeholder": {
-          "uk": "введіть пароль",
-          "en": "enter password",
-          "ru": "введите пароль"
+          "uk": "Введіть пароль",
+          "en": "Enter password",
+          "ru": "Введите пароль"
         }
       },
       "confirmPassword": {
@@ -233,9 +233,9 @@
           "ru": "Повторите пароль"
         },
         "placeholder": {
-          "uk": "повторіть пароль",
-          "en": "confirm password",
-          "ru": "повторите пароль"
+          "uk": "Повторіть пароль",
+          "en": "Confirm password",
+          "ru": "Повторите пароль"
         }
       }
     },
@@ -394,6 +394,73 @@
         "uk": "Всіх чатів",
         "en": "Active chats",
         "ru": "Всех чатов"
+      }
+    }
+  },
+  "editProfilePage": {
+    "title": {
+      "uk": "Редагувати профіль",
+      "en": "Edit profile",
+      "ru": "Редактировать профиль"
+    },
+    "inputs": {
+      "firstName": {
+        "label": {
+          "uk": "Ім'я",
+          "en": "First name",
+          "ru": "Имя"
+        },
+        "placeholder": {
+          "uk": "Введіть своє нове ім’я",
+          "en": "Enter your new first name",
+          "ru": "Введите ваше новое имя"
+        }
+      },
+      "lastName": {
+        "label": {
+          "uk": "Прізвище",
+          "en": "Last name",
+          "ru": "Фамилия"
+        },
+        "placeholder": {
+          "uk": "Введіть своє нове прізвище",
+          "en": "Enter your new last name",
+          "ru": "Введите вашу новую фамилию"
+        }
+      },
+      "userName": {
+        "label": {
+          "uk": "Ім'я користувача",
+          "en": "User name",
+          "ru": "Имя пользователя"
+        },
+        "placeholder": {
+          "uk": "Введіть своє нове ім'я користувача",
+          "en": "Enter your new userName",
+          "ru": "Введите ваше новое имя пользователя"
+        }
+      },
+      "email": {
+        "label": {
+          "uk": "Електрона почта",
+          "en": "Email address",
+          "ru": "Електронная почта"
+        },
+        "placeholder": {
+          "uk": "Введіть нову електронну адресу",
+          "en": "Enter your new email",
+          "ru": "Введите ваш новый адрес электронной почты"
+        }
+      },
+      "submitButton": {
+        "uk": "Зберегти",
+        "en": "Save",
+        "ru": "Сохранить"
+      },
+      "cancelButton": {
+        "uk": "Скасувати",
+        "en": "Cancel",
+        "ru": "Отменить"
       }
     }
   },
