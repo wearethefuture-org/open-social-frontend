@@ -20,7 +20,11 @@ const ChatsBlockUserAdmin = ({
 }) => {
   if (error) {
     return <p className="mb-0">{error.message}</p>;
+<<<<<<< HEAD
   };
+=======
+  }
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
 
 	if (isLoading) {
 		return (

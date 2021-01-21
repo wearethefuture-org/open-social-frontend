@@ -1,10 +1,18 @@
 .writeButton {
+<<<<<<< HEAD
   border: 1px solid rgb(172, 172, 172);
   margin: 5px 20px;
   border-radius: 10px;
   padding: 6px 7px;
   text-align: center;
 
+=======
+  margin: 2% 10vw;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 0 2px;
+  border-radius: 1rem;
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
   &:hover {
     background-color: rgba(10, 10, 10, 0.15);
   }

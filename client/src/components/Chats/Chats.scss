@@ -1,6 +1,10 @@
 .container {
   width: 100%;
+<<<<<<< HEAD
   margin: 7rem 1rem;
+=======
+  margin-top: 7rem;
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
   display: grid;
   grid-template-areas: 'header header' 'nav article';
   grid-template-rows: auto;
@@ -19,6 +23,7 @@
   grid-area: nav;
   background-color: white;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
+<<<<<<< HEAD
 }
 
 .iconHamburger {
@@ -51,4 +56,6 @@
     margin: 2rem 0 0 2rem;
   }
 
+=======
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
 }

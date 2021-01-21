@@ -7,7 +7,11 @@ import s from './Chats.scss';
 import ChatsDialogs from './chats-dialogs/chats-dialogs';
 import ChatsNav from './chats-nav/chats-nav';
 import textData from '../../utils/lib/languages';
+<<<<<<< HEAD
 import { hideMobileListUsers, showMobileListUsers } from '../../actions/chats';
+=======
+import ModalContainer from "../Modal/ModalContainer";
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
 
 class Chats extends Component {
   static propTypes = {
@@ -37,8 +41,15 @@ class Chats extends Component {
         </div>
         <ChatsDialogs />
       </div>
+<<<<<<< HEAD
     );
   }
+=======
+      <ChatsDialogs />
+      <ModalContainer />
+    </div>
+  );
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
 };
 
 Chats.whyDidYouRender = true;

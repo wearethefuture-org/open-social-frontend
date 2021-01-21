@@ -14,12 +14,20 @@ import {
 } from '../constants';
 
 const initialState = {
+<<<<<<< HEAD
   chatOption: { id: '' },
   data: [],
   error: [],
   isLoading: true,
   messages: [],
   visibleMobileMenu: false,
+=======
+	data: [],
+	error: [],
+	isLoading: true,
+	chatOption: { id: '' },
+	messages: []
+>>>>>>> 7a88e705a3e561750fc7ca6f219ed9b4530272f0
 };
 
 export default (state = initialState, action) => {
