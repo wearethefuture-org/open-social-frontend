@@ -116,7 +116,6 @@ OwnChatButton.propTypes = {
     id: PropTypes.number,
   }),
   partner_id: PropTypes.number.isRequired,
-  }).isRequired,
 };
 
 const mapStateToProps = state => ({
