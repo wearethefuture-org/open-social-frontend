@@ -35,6 +35,19 @@
     }
   },
 
+  "general": {
+    "searchPlaceholder": {
+      "uk": "Пошук...",
+      "en": "Search…",
+      "ru": "Поиск…"
+    },
+    "loadingPlaceholder": {
+      "uk": "Завантаження...",
+      "en": "Loading…",
+      "ru": "Загрузка…"
+    }
+  },
+
   "loginPage": {
     "title": {
       "uk": "Вхід",
@@ -205,6 +218,36 @@
         "uk": "Виберіть смайл…",
         "en": "Pick your emoji…",
         "ru": "Выберите смайл…"
+      },
+      "selectChatTopTitle": {
+        "uk": "Будь ласка, оберіть чат щоб відкрити переписку",
+        "en": "Please select a chat to start messaging",
+        "ru": "Пожалуйста, выберите чат чтобы открыть переписку"
+      },
+      "selectChatBottomTitle": {
+        "uk": "Оберіть чат",
+        "en": "Select a chat first",
+        "ru": "Выберите чат"
+      },
+      "searchPlaceholder": {
+        "uk": "Пошук в повідомленнях...",
+        "en": "Search in messages…",
+        "ru": "Поиск в сообщениях…"
+      },
+      "noMessageTitle": {
+        "uk": "Немає повідомлень, напишіть першим...",
+        "en": "No messages, type first one…",
+        "ru": "Нет сообщений, напишите первым…"
+      },
+      "noMoreDialogs": {
+        "uk": "Більше діалогів немає =(",
+        "en": "No more dialogs for you =(",
+        "ru": "Больше диалогов нет =("
+      },
+      "addDialog": {
+        "uk": "Написати...",
+        "en": "Write to...",
+        "ru": "Написать..."
       }
     }
   },

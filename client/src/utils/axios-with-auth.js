@@ -23,7 +23,7 @@ export default {
     const response = await axios.get(url, {
       headers: authHeader,
       params: data,
-    });
+    })
     authorize(response.data);
     return response;
   },

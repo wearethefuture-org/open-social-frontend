@@ -12,6 +12,8 @@ import { sendMessage, saveMessage } from '../../../actions/chats';
 import io from 'socket.io-client';
 import textData from '../../../utils/lib/languages';
 import MessageSearchPanel from '../messages-search/messages-search';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 let socket;
 
@@ -73,13 +75,13 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
           <div className={style.user}>
             <div className={style.userName}>
               <span className={style.infoMessage}>
-                Please select a chat to start messaging
+                {dialog.selectChatTopTitle[lang]}
               </span>
             </div>
           </div>
         </header>
         <div className={style.messagesWrapper}>
-          <span className={style.infoMessage}>Select a chat first</span>
+          <span className={style.infoMessage}>{dialog.selectChatBottomTitle[lang]}</span>
         </div>
         <div className={style.formLine} />
       </div>
@@ -105,8 +107,8 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
           </div>
         </div>
         <div className={style.buttons}>
-          <button className={style.attach} />
-          <button className={style.more} />
+          <AttachFileIcon />
+          <MoreVertIcon />
         </div>
       </header>
 

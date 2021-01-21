@@ -15,10 +15,10 @@ import history from '../../../history';
 import textData from '../../../utils/lib/languages.json';
 
 // eslint-disable-next-line no-shadow
-function OwnChatButton({ user: { id }, createChat, nameBtn, lang }) {
+function OwnChatButton({ user: { id }, createChat, nameBtn, lang, partnerId }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
-  const [descpiption, setDescription] = useState('');
+  const [description, setDescription] = useState('');
   const {
     profilePage: { ownChat },
   } = textData;
@@ -28,9 +28,10 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang }) {
     // eslint-disable-next-line unicorn/explicit-length-check
     if (name.length) {
       const parameters = {
-        descpiption,
+        description,
         name,
-        ownerid: id,
+        owner_id: id,
+        partner_id: partnerId,
       };
       // eslint-disable-next-line promise/catch-or-return
       createChat(parameters).then(() => history.push('/chats'));
@@ -89,7 +90,7 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang }) {
             rows="3"
             name="description"
             placeholder={ownChat.descriptionInput[lang]}
-            value={descpiption}
+            value={description}
             onChange={event => setDescription(event.target.value)}
           />
         </Form.Group>
@@ -108,8 +109,9 @@ OwnChatButton.propTypes = {
   // eslint-disable-next-line react/require-default-props
   user: PropTypes.shape({
     id: PropTypes.number,
-    lang: PropTypes.string.isRequired,
   }),
+  partnerId: PropTypes.number.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

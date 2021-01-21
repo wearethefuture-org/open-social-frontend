@@ -31,6 +31,8 @@ export const USER_CHAT_SET_MESSAGES = 'USER_CHAT_SET_MESSAGES';
 export const USER_CHAT_CLEAR_MESSAGES = 'USER_CHAT_CLEAR_MESSAGES';
 export const USER_CHAT_ADD_MESSAGE = 'USER_CHAT_ADD_MESSAGE';
 export const USER_CHAT_RECIVED_MESSAGE = 'USER_CHAT_RECIVED_MESSAGE';
+export const SHOW_MOBILE_LIST_USERS = 'SHOW_MOBILE_LIST_USERS';
+export const HIDE_MOBILE_LIST_USERS = 'HIDE_MOBILE_LIST_USERS';
 
 export const PROFILE_DATA_LOADING = 'PROFILE_DATA_LOADING';
 export const PROFILE_DATA_LOADING_DATA_SUCCESS =
@@ -38,6 +40,9 @@ export const PROFILE_DATA_LOADING_DATA_SUCCESS =
 export const PROFILE_DATA_LOADING_DATA_FAILURE =
   'PROFILE_DATA_LOADING_DATA_FAILURE';
 
-export const apiURL = 'https://social.cloudns.cl';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';
+
+// export const apiURL = 'https://social.cloudns.cl';
 // export const apiURL = "http://178.20.156.208:4000";
-// export const apiURL = 'http://localhost:4000';
+export const apiURL = 'http://localhost:4000';

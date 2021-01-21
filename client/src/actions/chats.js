@@ -10,7 +10,9 @@ import {
 	USER_CHAT_CLEAR_MESSAGES,
 	USER_CHAT_ADD_MESSAGE,
 	USER_CHAT_RECIVED_MESSAGE,
-	apiURL
+	apiURL,
+  SHOW_MOBILE_LIST_USERS,
+  HIDE_MOBILE_LIST_USERS
 } from '../constants';
 
 const userChatDataSuccess = (payload) => ({
@@ -60,21 +62,35 @@ const saveRecivedMessage = (payload) => ({
 	type: USER_CHAT_RECIVED_MESSAGE
 });
 
+export const showMobileListUsers = () => {
+  return {
+    type: SHOW_MOBILE_LIST_USERS,
+  };
+};
+
+export const hideMobileListUsers = () => {
+  return {
+    type: HIDE_MOBILE_LIST_USERS,
+  };
+};
+
 // eslint-disable-next-line consistent-return
 
-export const getUsersChatData = ({ take, skip, search }) => async (dispatch) => {
+export const getUsersChatData = ({ take, skip, search, oldData }) => async (dispatch) => {
 	dispatch(userChatDataLoading());
 	try {
-		const { data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
+		let { data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
 			take,
 			skip,
 			search: search
 		});
-		dispatch(userChatDataSuccess({ data }));
-
-		return data;
+		if(oldData){
+      data = oldData.concat(data);
+    }
+    dispatch(userChatDataSuccess({ data }));
+    return data;
 	} catch (error) {
-		dispatch(userChatDataFailure(error.message));
+    dispatch(userChatDataFailure(error.response.data.message));
 	}
 };
 
@@ -87,6 +103,7 @@ export const setMessagesData = (chat_id, search) => async (dispatch) => {
 			search
 		});
 		dispatch(messagesData({ data }));
+		dispatch(hideMobileListUsers());
 	} catch (error) {
 		console.log(error);
 	}
@@ -96,7 +113,7 @@ export const setChatData = (data) => (dispatch) => {
 	dispatch(chatData(data));
 };
 
-export const createChat = (parameters) => async (dispatch) => {
+export const createChat = parameters => async dispatch => {
 	dispatch(userChatDataLoading());
 	try {
 		const { data } = await apiClient.post(`${apiURL}/api/v1/chats`, parameters);

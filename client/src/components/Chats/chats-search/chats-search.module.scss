@@ -1,22 +1,21 @@
 .SearchDialogs {
-	width: 95%;
-	height: 45px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	text-align: center;
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 10px;
+  margin: 0 20px 0 20px;
 }
 
 .SearchInputDialog {
-	border: 1px solid rgb(172, 172, 172);
-	border-radius: 10px;
 	height: 28px;
-	width: 125px;
 	outline: none;
 	padding: 6px 7px;
+  flex-basis: 90%;
 }
 
-.SearchInputDialog:focus {
-	background-color: #ccc;
-	outline: none;
+.SearchIcon {
+  margin-left: 5px;
+  opacity: 0.6;
 }
