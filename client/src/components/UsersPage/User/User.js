@@ -10,7 +10,12 @@ import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
 import OwnChatButton from '../../profile/UserProfile/OwnChat/OwnChat';
 import { setUserData } from '../../../actions/profile';
+import { createChat } from '../../../actions/chats';
+import apiClient from '../../../utils/axios-with-auth';
+import history from '../../../history';
 import textData from '../../../utils/lib/languages.json';
+import styles from '../../profile/UserProfile/ProfileButton/ProfileButton.scss';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 
 class User extends React.Component {
   static propTypes = {
@@ -28,6 +33,19 @@ class User extends React.Component {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.setUserData({ id: null });
   }
+
+  handleChatOpen = (id, firstName) => {
+    const owner_id = apiClient.userId();
+    console.log(id);
+    const params = {
+      name: firstName,
+      description: '',
+      partner_id: id,
+      owner_id,
+    };
+
+    this.props.createChat(params).then(() => history.push('/chats'));
+  };
 
   render() {
     const {
@@ -66,7 +84,13 @@ class User extends React.Component {
               </button>
             </div>
             <div>
-              <OwnChatButton partnerId={id} />
+              {/* <OwnChatButton partnerId={id} /> */}
+              <div
+                className={styles.buttonMessage}
+                onClick={() => this.handleChatOpen(id, firstName)}
+              >
+                <BorderColorIcon fontSize="large" />
+              </div>
             </div>
           </div>
         </div>
@@ -86,5 +110,5 @@ export default connect(
   ({ menu: { lang } }) => ({
     lang,
   }),
-  { setUserData },
-)(withStyles(s)(React.memo(User)));
+  { setUserData, createChat },
+)(withStyles(s, styles)(React.memo(User)));

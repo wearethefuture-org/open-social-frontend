@@ -16,7 +16,7 @@ import textData from '../../../../utils/lib/languages.json';
 
 // eslint-disable-next-line no-shadow
 function OwnChatButton({ user: { id }, createChat, nameButton, lang, partner_id }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const {
