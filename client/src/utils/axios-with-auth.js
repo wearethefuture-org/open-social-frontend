@@ -72,4 +72,12 @@ export default {
     }
     return null;
   },
+
+  user() {
+    const token = isomorphicCookie.load('token');
+    if (token) {
+      return JWT(token).user;
+    }
+    return null;
+  }
 };

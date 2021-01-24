@@ -60,6 +60,8 @@ class ChatsBlockUsers extends Component {
     const { data, isLoading, error, lang } = this.props;
     const { hasMore } = this.state;
 
+    console.log(this.props)
+
     if (!data && error) {
       return <p className="mb-0">{error}</p>;
     }
@@ -133,7 +135,7 @@ class ChatsBlockUsers extends Component {
 ChatsBlockUsers.whyDidYouRender = true;
 export default connect(
   ({
-    userChats: { data, events, error, isLoading, chatOption },
+    userChats: { data, events, error, isLoading, chatOption,  },
     menu: { lang },
   }) => ({
     chatOption,
