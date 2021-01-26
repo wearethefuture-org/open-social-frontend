@@ -1,4 +1,4 @@
-# base image
+# base node image 
 FROM node:12.2.0
 
 # set working folder
