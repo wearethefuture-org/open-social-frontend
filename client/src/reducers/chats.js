@@ -53,7 +53,13 @@ export default (state = initialState, action) => {
       };
     case USER_CHAT_CLEAR_MESSAGES:
       return { ...state, messages: [] };
-    case (USER_CHAT_ADD_MESSAGE, USER_CHAT_RECIVED_MESSAGE):
+    case USER_CHAT_ADD_MESSAGE:
+      return {
+        ...state,
+        isLoading: false,
+        messages: [...state.messages, action.payload],
+      };
+    case USER_CHAT_RECIVED_MESSAGE:
       return {
         ...state,
         isLoading: false,

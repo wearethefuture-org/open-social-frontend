@@ -37,6 +37,7 @@ class User extends React.Component {
   handleChatOpen = (id, firstName) => {
     const owner_id = apiClient.userId();
     const user = apiClient.user();
+
     const params = {
       name: `${user.firstName} - ${firstName}`,
       description: '',

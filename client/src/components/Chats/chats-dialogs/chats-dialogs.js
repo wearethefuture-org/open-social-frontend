@@ -30,7 +30,7 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
         saveMessage(message);
       });
     }
-  }, []);
+  }, [sendMessage]);
 
   const {
     chatsPage: { dialog },
