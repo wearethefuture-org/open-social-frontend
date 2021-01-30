@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
-import OwnChatButton from '../../profile/UserProfile/OwnChat/OwnChat';
 import { setUserData } from '../../../actions/profile';
 import { createChat } from '../../../actions/chats';
 import apiClient from '../../../utils/axios-with-auth';
@@ -24,9 +23,16 @@ class User extends React.Component {
     // eslint-disable-next-line react/forbid-prop-types
     user: PropTypes.object.isRequired,
   };
+  state = {
+    user: null,
+    thisUser: false,
+  };
 
   componentDidMount() {
     this.toUserProfile();
+    const user = apiClient.user();
+    const thisUser = user.id === this.props.user.id;
+    this.setState({ user, thisUser });
   }
 
   componentWillUnmount() {
@@ -35,14 +41,13 @@ class User extends React.Component {
   }
 
   handleChatOpen = (id, firstName) => {
-    const owner_id = apiClient.userId();
-    const user = apiClient.user();
+    const { user } = this.state;
 
     const params = {
       name: `${user.firstName} - ${firstName}`,
       description: '',
+      owner_id: user.id,
       partner_id: id,
-      owner_id,
     };
 
     this.props.createChat(params).then(() => history.push('/chats'));
@@ -54,6 +59,8 @@ class User extends React.Component {
       lang,
     } = this.props;
     const { usersPage } = textData;
+    const { thisUser } = this.state;
+
     return (
       <>
         <div className={s.userContainer}>
@@ -85,13 +92,14 @@ class User extends React.Component {
               </button>
             </div>
             <div>
-              {/* <OwnChatButton partnerId={id} /> */}
-              <div
-                className={styles.buttonMessage}
-                onClick={() => this.handleChatOpen(id, firstName)}
-              >
-                <BorderColorIcon fontSize="large" />
-              </div>
+              {!thisUser && (
+                <div
+                  className={styles.buttonMessage}
+                  onClick={() => this.handleChatOpen(id, firstName)}
+                >
+                  <BorderColorIcon fontSize="large" />
+                </div>
+              )}
             </div>
           </div>
         </div>

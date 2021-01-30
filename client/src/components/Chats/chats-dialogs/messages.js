@@ -8,7 +8,6 @@ import { connect, useSelector } from 'react-redux';
 import textData from '../../../utils/lib/languages.json';
 
 function Messages({ chat: { messages } }) {
-  console.log(messages);
 
   const lang = useSelector(store => store.menu.lang);
   if (!messages.length) {

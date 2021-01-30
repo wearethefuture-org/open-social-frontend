@@ -17,6 +17,7 @@ import {
   setChatData,
   setMessagesData,
 } from '../../../actions/chats';
+import apiServices from '../../../utils/axios-with-auth';
 import Loader from '../../Loader/Loader';
 import avatar from '../../../assets/avatar2.png';
 import style from './chats-block-users.module.scss';
@@ -43,12 +44,15 @@ class ChatsBlockUsers extends Component {
     hasMore: true,
     skip: 0,
     take: 5,
+    id: null,
   };
 
   componentDidMount() {
     const { dispatchGetUsersChatData } = this.props;
+    const id = apiServices.userId();
+    this.setState({ id });
     const { take, skip } = this.state;
-    dispatchGetUsersChatData({ skip, take });
+    dispatchGetUsersChatData({ id, skip, take });
   }
 
   componentWillUnmount() {
@@ -58,9 +62,7 @@ class ChatsBlockUsers extends Component {
 
   render() {
     const { data, isLoading, error, lang } = this.props;
-    const { hasMore } = this.state;
-
-    console.log(this.props)
+    const { hasMore, id } = this.state;
 
     if (!data && error) {
       return <p className="mb-0">{error}</p>;
@@ -114,11 +116,11 @@ class ChatsBlockUsers extends Component {
 
   getChats = () => {
     // eslint-disable-next-line prefer-const
-    let { take, skip, hasMore } = this.state;
+    let { take, skip, hasMore, id } = this.state;
     const { dispatchGetUsersChatData } = this.props;
     const { data, error } = this.props;
     skip += take;
-    dispatchGetUsersChatData({ skip, take, oldData: data }).then(chats => {
+    dispatchGetUsersChatData({id, skip, take, oldData: data }).then(chats => {
       if (chats !== undefined) {
         this.setState({ hasMore: !!chats.length, skip });
       }
@@ -135,7 +137,7 @@ class ChatsBlockUsers extends Component {
 ChatsBlockUsers.whyDidYouRender = true;
 export default connect(
   ({
-    userChats: { data, events, error, isLoading, chatOption,  },
+    userChats: { data, events, error, isLoading, chatOption },
     menu: { lang },
   }) => ({
     chatOption,
