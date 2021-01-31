@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Message from './message';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import style from './messages.module.scss';
 import ScrollToBottom from 'react-scroll-to-bottom';
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import textData from '../../../utils/lib/languages.json';
 
 function Messages() {
