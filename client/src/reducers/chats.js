@@ -27,7 +27,9 @@ export default (state = initialState, action) => {
     case USERS_CHAT_DATA_LOADING_DATA_SUCCESS:
       return {
         ...state,
-        data: action.payload,
+        data: state.data.find(elem => elem.id === action.payload.id)
+          ? state.data
+          : action.payload,
         error: '',
         isLoading: false,
       };

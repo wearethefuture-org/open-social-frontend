@@ -77,7 +77,6 @@ export const getUsersChatData = ({
   take,
   skip,
   search,
-  oldData,
 }) => async dispatch => {
   dispatch(userChatDataLoading());
   try {
@@ -87,7 +86,7 @@ export const getUsersChatData = ({
       skip,
       search,
     });
-    dispatch(userChatDataSuccess(oldData ? oldData.concat(data) : data));
+    dispatch(userChatDataSuccess(data));
   } catch (error) {
     dispatch(userChatDataFailure(error.response.data.message));
   }

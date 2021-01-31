@@ -62,7 +62,7 @@ class ChatsBlockUsers extends Component {
 
   render() {
     const { data, isLoading, error, lang } = this.props;
-    const { hasMore, id } = this.state;
+    const { hasMore } = this.state;
 
     if (!data && error) {
       return <p className="mb-0">{error}</p>;
@@ -113,18 +113,15 @@ class ChatsBlockUsers extends Component {
       </div>
     );
   }
-
-  getChats = () => {
-    // eslint-disable-next-line prefer-const
-    let { take, skip, hasMore, id } = this.state;
-    const { dispatchGetUsersChatData } = this.props;
-    const { data, error } = this.props;
+oldData
+  getChats = async () => {
+    let { take, skip, id } = this.state;
+    const { dispatchGetUsersChatData, data: chats, error } = this.props;
     skip += take;
-    dispatchGetUsersChatData({id, skip, take, oldData: data }).then(chats => {
-      if (chats !== undefined) {
-        this.setState({ hasMore: !!chats.length, skip });
-      }
-    });
+    await dispatchGetUsersChatData({ id, skip, take });
+    if (chats) {
+      this.setState({ hasMore: !!chats.length, skip });
+    }
   };
 
   selectChat = data => {
