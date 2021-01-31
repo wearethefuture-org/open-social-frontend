@@ -30,6 +30,13 @@ const routes = [
     // action : (props) => <Confirm {...props} />
   },
   {
+    load: () =>
+      import(
+        /* webpackChunkName: 'forgot-password' */ '../components/ForgotPassword'
+      ),
+    path: '/forgot-password',
+  },
+  {
     async action({ next, token }) {
       // Execute each child route until one of them return the result
       const route = await next();
