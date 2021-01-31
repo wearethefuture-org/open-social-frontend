@@ -27,7 +27,9 @@ export default (state = initialState, action) => {
     case USERS_CHAT_DATA_LOADING_DATA_SUCCESS:
       return {
         ...state,
-        ...action.payload,
+        data: state.data.find(elem => elem.id === action.payload.id)
+          ? state.data
+          : action.payload,
         error: '',
         isLoading: false,
       };
@@ -53,7 +55,13 @@ export default (state = initialState, action) => {
       };
     case USER_CHAT_CLEAR_MESSAGES:
       return { ...state, messages: [] };
-    case (USER_CHAT_ADD_MESSAGE, USER_CHAT_RECIVED_MESSAGE):
+    case USER_CHAT_ADD_MESSAGE:
+      return {
+        ...state,
+        isLoading: false,
+        messages: [...state.messages, action.payload],
+      };
+    case USER_CHAT_RECIVED_MESSAGE:
       return {
         ...state,
         isLoading: false,
