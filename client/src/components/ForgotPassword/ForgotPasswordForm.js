@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import useStyles from 'isomorphic-style-loader/useStyles';
 import InputField from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import styles from './ForgotPasswordForm.scss';
 
-const ForgotPasswordForm = ({ handleSubmit }) => {
+const ForgotPasswordForm = ({ handleSubmit, change }) => {
   useStyles(styles);
+  useEffect(() => {
+    change('type', 'email');
+  });
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label htmlFor="email">Введите ваш E-mail:</label>
@@ -19,7 +22,9 @@ const ForgotPasswordForm = ({ handleSubmit }) => {
         description="Email"
         placeholder="E-mail"
       />
-      <button className={styles.submitButton} type="submit">Submit</button>
+      <button className={styles.submitButton} type="submit">
+        Submit
+      </button>
     </form>
   );
 };
