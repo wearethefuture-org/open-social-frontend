@@ -5,23 +5,23 @@ import InputField from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import styles from './ForgotPasswordForm.scss';
 
-const ForgotPasswordForm = ({ handleSubmit }) => {
+const ResetPasswordForm = ({ handleSubmit }) => {
   useStyles(styles);
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <label htmlFor="email">Введите ваш E-mail:</label>
+      <label htmlFor="password">Введите ваш новый пароль:</label>
       <Field
-        id="email"
-        name="email"
+        id="password"
+        name="password"
         component={InputField}
-        validate={VALIDATION_RULES.EMAIL}
-        type="email"
-        description="Email"
-        placeholder="E-mail"
+        validate={VALIDATION_RULES.PASSWORD}
+        type="password"
+        description="Password"
+        placeholder="Password"
       />
       <button className={styles.submitButton} type="submit">Submit</button>
     </form>
   );
 };
 
-export default reduxForm({ form: 'email' })(ForgotPasswordForm);
+export default reduxForm({ form: 'password' })(ResetPasswordForm);

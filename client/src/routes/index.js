@@ -35,6 +35,11 @@ const routes = [
         /* webpackChunkName: 'forgot-password' */ '../components/ForgotPassword'
       ),
     path: '/forgot-password',
+    children: [
+      {
+        path: '/:id',
+      },
+    ],
   },
   {
     async action({ next, token }) {
