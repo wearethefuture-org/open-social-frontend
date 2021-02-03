@@ -1,44 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import useStyles from 'isomorphic-style-loader/useStyles';
 import ForgotPasswordForm from './ForgotPasswordForm';
-import ResetPasswordForm from './ResetPasswordForm';
 import history from '../../history';
 import { apiURL } from '../../constants/index';
 import styles from './ForgotPasswordPage.scss';
+import { loginPage } from '../../utils/lib/languages.json';
 
 const ForgotPasswordPage = () => {
   useStyles(styles);
 
-  const [reset, setReset] = useState(false);
+  const lang = useSelector(({ menu: { lang } }) => lang);
+
+  const [link, setLink] = useState('');
+  const [userId, setUserId] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async credentials => {
-    console.log(credentials);
-    // const response = await axios.post(`${apiURL}/auth/forgot`, credentials);
-    // console.log(response);
-  };
+  useEffect(() => {
+    const url =
+      history.location.pathname.length === 16
+        ? '/forgot-password'
+        : '/forgot-password/';
 
-  const userId = history.location.pathname.replace('/forgot-password/', '');
+    const id = history.location.pathname.replace(url, '');
+    setUserId(id);
+
+    const validateId = async id => {
+      try {
+        const response = await axios.post(`${apiURL}/api/v1/auth/forgot`, {
+          idPwdReset: id,
+        });
+      } catch (e) {
+        history.push('/');
+      }
+    };
+
+    validateId(id);
+  }, []);
+
+  const handleSubmit = async credentials => {
+    credentials.idPwdReset = userId;
+    const { data } = await axios.post(
+      `${apiURL}/api/v1/auth/forgot`,
+      credentials,
+    );
+
+    if (data) {
+      setLink(data);
+    }
+
+    if (data === 'Password change success') {
+      setSuccess(true);
+    }
+  };
 
   return (
     <div className={styles.container}>
       <div>
-        <h1>Забыли пароль?</h1>
+        <h1>{loginPage.forgotPassword[lang]}</h1>
       </div>
       {success ? (
         <div>
-          <h2>Пароль успешно изменен!</h2>
+          <h2>{loginPage.passwordSuccessChange[lang]}</h2>
         </div>
       ) : (
         <div>
-          {reset ? (
-            <ResetPasswordForm onSubmit={handleSubmit} />
-          ) : (
-            <ForgotPasswordForm onSubmit={handleSubmit} />
+          {!userId && (
+            <ForgotPasswordForm onSubmit={handleSubmit} type="email" />
+          )}
+          {userId && (
+            <ForgotPasswordForm onSubmit={handleSubmit} type="password" />
           )}
         </div>
       )}
+      {link && <h3 className={styles.link}>{link}</h3>}
     </div>
   );
 };
