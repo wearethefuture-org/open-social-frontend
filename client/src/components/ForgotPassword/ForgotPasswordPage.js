@@ -49,12 +49,11 @@ const ForgotPasswordPage = () => {
         `${apiURL}/api/v1/auth/forgot`,
         credentials,
       );
-      if (data) {
-        setLink(data);
-      }
 
       if (data === 'Password change success') {
         setSuccess(true);
+      } else {
+        setLink(data);
       }
     } catch (e) {
       console.log(e);
@@ -80,7 +79,11 @@ const ForgotPasswordPage = () => {
           )}
         </div>
       )}
-      {link && <h3 className={styles.link}>{link}</h3>}
+      {link && (
+        <a href={link} className={styles.link} target="_blank">
+          {link}
+        </a>
+      )}
     </div>
   );
 };
