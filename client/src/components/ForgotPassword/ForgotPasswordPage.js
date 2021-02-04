@@ -18,6 +18,7 @@ const ForgotPasswordPage = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
+    // Получение ID из строки запроса
     const url =
       history.location.pathname.length === 16
         ? '/forgot-password'
@@ -26,9 +27,10 @@ const ForgotPasswordPage = () => {
     const id = history.location.pathname.replace(url, '');
     setUserId(id);
 
+    // Проверка ID в базе
     const validateId = async id => {
       try {
-        const response = await axios.post(`${apiURL}/api/v1/auth/forgot`, {
+        await axios.post(`${apiURL}/api/v1/auth/forgot`, {
           idPwdReset: id,
         });
       } catch (e) {
@@ -41,17 +43,21 @@ const ForgotPasswordPage = () => {
 
   const handleSubmit = async credentials => {
     credentials.idPwdReset = userId;
-    const { data } = await axios.post(
-      `${apiURL}/api/v1/auth/forgot`,
-      credentials,
-    );
+    // В зависимости от credentials.type будет по разному обрабатываться на сервере
+    try {
+      const { data } = await axios.post(
+        `${apiURL}/api/v1/auth/forgot`,
+        credentials,
+      );
+      if (data) {
+        setLink(data);
+      }
 
-    if (data) {
-      setLink(data);
-    }
-
-    if (data === 'Password change success') {
-      setSuccess(true);
+      if (data === 'Password change success') {
+        setSuccess(true);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
