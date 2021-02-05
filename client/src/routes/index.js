@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import isomorphicCookie from 'isomorphic-cookie';
 import React from 'react';
+import "regenerator-runtime/runtime.js";
 
 /* const Confirm = import(
   /!* webpackChunkName: 'confirm' *!/ '../components/confirm'
