@@ -130,6 +130,11 @@
         }
       }
     },
+    "passwordSuccessChange": {
+      "uk": "Пароль успішно змінено!",
+      "en": "Password success change",
+      "ru": "Пароль успешно изменен!"
+    },
     "rememberUser": {
       "uk": "Запам'ятати мене",
       "en": "Remember me",
@@ -138,7 +143,22 @@
     "forgotPassword": {
       "uk": "Забули пароль?",
       "en": "Forgot the password?",
-      "ru": "Забыли пароль?"
+      "ru": "Забыли пароль?",
+      "email": {
+        "uk": "Введіть вашу електронну пошту",
+        "en": "Enter your E-mail",
+        "ru": "Введите вашу электронную почту?"
+      },
+      "password": {
+        "uk": "Введіть ваш новий пароль",
+        "en": "Enter your new password",
+        "ru": "Введите ваш новый пароль"
+      },
+      "send": {
+        "uk": "Відправити",
+        "en": "Send",
+        "ru": "Отправить"
+      }
     },
     "submitButton": {
       "uk": "Вхід",

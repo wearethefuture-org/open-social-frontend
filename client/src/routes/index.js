@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import isomorphicCookie from 'isomorphic-cookie';
 import React from 'react';
+import "regenerator-runtime/runtime.js";
 
 /* const Confirm = import(
   /!* webpackChunkName: 'confirm' *!/ '../components/confirm'
@@ -28,6 +29,18 @@ const routes = [
       import(/* webpackChunkName: 'confirm' */ '../components/confirm'),
     path: '/auth/confirm',
     // action : (props) => <Confirm {...props} />
+  },
+  {
+    load: () =>
+      import(
+        /* webpackChunkName: 'forgot-password' */ '../components/ForgotPassword'
+      ),
+    path: '/forgot-password',
+    children: [
+      {
+        path: '/:id',
+      },
+    ],
   },
   {
     async action({ next, token }) {

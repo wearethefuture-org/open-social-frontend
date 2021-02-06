@@ -61,7 +61,7 @@ class LoginPage extends React.Component {
                   submitText={loginPage.submitButton[lang]}
                 />
                 <div className={s.links}>
-                  <Link to="/forgotPassword" className={s.link}>
+                  <Link to="/forgot-password" className={s.link}>
                     {loginPage.forgotPassword[lang]}
                   </Link>
                   <Link to="/signup" className={s.link}>
