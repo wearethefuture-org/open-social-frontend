@@ -1,7 +1,7 @@
 # base image
 FROM node:12.2.0
 
-# set working directory
+# set working folder
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
