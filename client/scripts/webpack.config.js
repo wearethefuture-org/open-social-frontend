@@ -23,7 +23,8 @@ const reScript = /\.(js|jsx|mjs)$/;
 const reStyle = /\.(css|less|styl|scss|sass|sss)$/;
 const reImage = /\.(bmp|gif|jpg|jpeg|png|svg)$/;
 const staticAssetName = isDebug
-  ? '[path][name].[ext]?[hash:8]'
+//? '[path][name].[ext]?[hash:8]'
+  ? '[path][name].[ext]'
   : '[hash:8].[ext]';
 const BABEL_PRESET_ENV = '@babel/preset-env';
 const FILE_LOADER = 'file-loader';

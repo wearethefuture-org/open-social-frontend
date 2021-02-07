@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import useStyles from 'isomorphic-style-loader/useStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
 import InputField from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
@@ -9,8 +9,6 @@ import styles from './ForgotPasswordForm.scss';
 import { loginPage } from '../../utils/lib/languages.json';
 
 const ForgotPasswordForm = ({ handleSubmit, change, type }) => {
-  useStyles(styles);
-
   useEffect(() => {
     change('type', type);
   });
@@ -52,4 +50,4 @@ ForgotPasswordForm.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default reduxForm({ form: 'resetPwd' })(ForgotPasswordForm);
+export default withStyles(styles)(reduxForm({ form: 'resetPwd' })(ForgotPasswordForm));

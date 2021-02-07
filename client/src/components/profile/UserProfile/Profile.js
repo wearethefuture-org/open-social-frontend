@@ -18,7 +18,7 @@ import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import OwnChatButton from './OwnChat/OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
-import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
+import defaultUserPhoto from '../../../assets/defaultUserPhoto.jpg';
 import textData from '../../../utils/lib/languages.json';
 import history from '../../../history';
 
@@ -35,11 +35,27 @@ class Profile extends Component {
     lang: PropTypes.string.isRequired,
   };
 
+  getUserAvatar() {
+    // eslint-disable-next-line react/destructuring-assignment
+    const { avatar } = this.props.avatar;
+    if (avatar === null) {
+      return defaultUserPhoto;
+    }
+    return avatar.url;
+  }
+
+  loadPhoto = event => {
+    const photo = event.target.files[0];
+    apiClient.saveUserProfilePhoto(photo);
+    history.push(`/`);
+  };
+
   render() {
     const {
       id: { id },
       lang,
     } = this.props;
+
     const { profilePage } = textData;
     return (
       <Container className={styles.UserProfile}>
@@ -109,21 +125,6 @@ class Profile extends Component {
       </Container>
     );
   }
-
-  getUserAvatar() {
-    // eslint-disable-next-line react/destructuring-assignment
-    const { avatar } = this.props.avatar;
-    if (avatar === null) {
-      return defaultUserPhoto;
-    }
-    return avatar.url;
-  }
-
-  loadPhoto = event => {
-    const photo = event.target.files[0];
-    apiClient.saveUserProfilePhoto(photo);
-    history.push(`/`);
-  };
 }
 
 Profile.whyDidYouRender = true;

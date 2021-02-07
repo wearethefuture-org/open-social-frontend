@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import useStyles from 'isomorphic-style-loader/useStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import ForgotPasswordForm from './ForgotPasswordForm';
 import history from '../../history';
 import { apiURL } from '../../constants/index';
@@ -9,8 +9,6 @@ import styles from './ForgotPasswordPage.scss';
 import { loginPage } from '../../utils/lib/languages.json';
 
 const ForgotPasswordPage = () => {
-  useStyles(styles);
-
   const lang = useSelector(({ menu: { lang } }) => lang);
 
   const [link, setLink] = useState('');
@@ -89,4 +87,4 @@ const ForgotPasswordPage = () => {
   );
 };
 
-export default ForgotPasswordPage;
+export default withStyles(styles)(ForgotPasswordPage);

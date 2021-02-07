@@ -14,6 +14,7 @@ import textData from '../../../utils/lib/languages';
 import MessageSearchPanel from '../messages-search/messages-search';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { apiURLSocket } from '../../../constants';
 
 let socket;
 
@@ -21,11 +22,10 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
   const [emojiPickerState, SetEmojiPicker] = useState(false);
   const [message, SetMessage] = useState('');
   const lang = useSelector(store => store.menu.lang);
-  const ENDPOINT = 'http://localhost:5000';
 
   useEffect(() => {
     if (!socket) {
-      socket = io(ENDPOINT);
+      socket = io(apiURLSocket);
       socket.on('message', message => {
         saveMessage(message);
       });
@@ -81,7 +81,9 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
           </div>
         </header>
         <div className={style.messagesWrapper}>
-          <span className={style.infoMessage}>{dialog.selectChatBottomTitle[lang]}</span>
+          <span className={style.infoMessage}>
+            {dialog.selectChatBottomTitle[lang]}
+          </span>
         </div>
         <div className={style.formLine} />
       </div>
