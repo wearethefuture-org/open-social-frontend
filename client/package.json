@@ -160,7 +160,7 @@
     "copy": "babel-node scripts/run copy",
     "bundle": "babel-node scripts/run bundle",
     "build": "babel-node scripts/run build",
-    "build-stats": "yarn run build --release --analyse",
+    "build-stats": "yarn run build --release",
     "deploy": "babel-node scripts/run deploy",
     "render": "babel-node scripts/run render",
     "serve": "babel-node scripts/run run-server",
