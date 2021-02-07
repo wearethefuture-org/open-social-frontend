@@ -28,17 +28,18 @@ const ForgotPasswordPage = () => {
     setUserId(id);
 
     // Проверка ID в базе
-    const validateId = async id => {
-      try {
-        await axios.post(`${apiURL}/api/v1/auth/forgot`, {
-          idPwdReset: id,
-        });
-      } catch (e) {
-        history.push('/');
-      }
-    };
-
-    validateId(id);
+    if (id) {
+      const validateId = async id => {
+        try {
+          await axios.post(`${apiURL}/api/v1/auth/forgot`, {
+            idPwdReset: id,
+          });
+        } catch (e) {
+          history.push('/');
+        }
+      };
+      validateId(id);
+    }
   }, []);
 
   const handleSubmit = async credentials => {
