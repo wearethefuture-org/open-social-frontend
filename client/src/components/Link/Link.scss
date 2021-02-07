@@ -1,11 +1,12 @@
 a {
+  display: block;
   color: rgb(96, 97, 98);
   font: bold 20px;
   text-decoration: none;
-}
-
-a:hover {
-  color: rgb(96, 97, 98);
-  font: bold 20px;
-  text-decoration: none;
+  transition: 0.2s ease;
+  // ?
+  &:hover {
+    color: rgb(96, 97, 98);
+    text-decoration: none;
+  }
 }

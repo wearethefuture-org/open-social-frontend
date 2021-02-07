@@ -1,11 +1,10 @@
-
 .container {
+  width: 100%;
+  margin: 7rem 1rem;
   display: grid;
   grid-template-areas: 'header header' 'nav article';
-  grid-column-gap: 20px;
-  grid-template-rows: 80px 1fr;
-  grid-template-columns: 20% 1fr;
-  margin-right: 20px;
+  grid-template-rows: auto;
+  grid-template-columns: 30% 1fr;
 }
 
 .chatsHeader {
@@ -16,8 +15,40 @@
 }
 
 .mainNav {
+  height: 80%;
   grid-area: nav;
   background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.iconHamburger {
+  display: none !important;
+}
+
+.navShow {
+  z-index: 9;
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .mainNav {
+    display: none;
+  }
+
+  .container {
+    margin: 7rem 0;
+    grid-template-areas: 'header header' 'article article';
+  }
+
+  .iconHamburger {
+    display: block !important;
+    float: left;
+    font-size: 3rem !important;
+    margin: 2rem 0 0 2rem;
+  }
+
 }

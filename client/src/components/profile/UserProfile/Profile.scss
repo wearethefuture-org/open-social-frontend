@@ -1,36 +1,11 @@
-@media (max-width: 500px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 24.8em;
-  }
-}
-
-@media (max-width: 375px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 22.7em;
-  }
-}
-
-@media (max-width: 360px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 21.7em;
-  }
-}
-
-@media (max-width: 330px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 19.3em;
-  }
-}
-
 .UserProfile {
+  width: 90%;
+  max-width: 100rem;
+  margin-top: 7rem;
+  margin-bottom: 3rem;
   border-radius: 5px;
   box-shadow: 0 0 10px gray;
-  padding: 1em;
-  margin: 0 auto;
+  padding-bottom: 1em;
 
   .ProfileCard {
     margin: 0.5em 0.5em 0 0.5em;

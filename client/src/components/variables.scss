@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
 :root {
   /*
@@ -14,6 +16,7 @@
   --max-content-width: 1000px;
   --color-header-background: #3f426b;
   --color-header-text: #eee;
+  --color-test: #c82333;
 
   /*
    * Media queries breakpoints

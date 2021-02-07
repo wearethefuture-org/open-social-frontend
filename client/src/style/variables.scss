@@ -1,2 +1,16 @@
+//base colors and backgrounds
+$color-default-text: #292b2c;
+$bg-default-select: #b3d4fc;
+$color-default-border: #ccc;
+$color-default-link: #13a6e1;
 $color-header-background: #3f426b;
-$color-header-text: #eeeeee;
+$color-header-text: #eee;
+
+// other
+$font-family-base: "Montserrat", "HelveticaNeue-Light", "sans-serif";
+
+//media screen width only for example - not use for media queries
+$media-width-1: 360px;
+$media-width-2: 1024px;
+$media-width-3: 1440px;
+$media-width-4: 1920px;

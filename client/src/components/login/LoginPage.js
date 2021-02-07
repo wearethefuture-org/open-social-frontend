@@ -8,44 +8,70 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Link from '../Link/Link';
 import UserForm from './LoginForm';
 import history from '../../history';
+
 import { login } from '../../actions/user';
+import textData from '../../utils/lib/languages.json';
 
 import s from './Login.scss';
+// import banner from "../../assets/images_banner/loginBackground.png";
+// import banner from '../../assets/images_banner/withoutLogo.png';
 
 class LoginPage extends React.Component {
   static propTypes = {
+    lang: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
     setUser: PropTypes.func.isRequired,
   };
 
   handleSubmit = async data => {
-    try {
-      const { setUser } = this.props;
-      await setUser(data);
-      history.push('/');
-    } catch (error) {
-      throw new Error(error);
-    }
+    const { setUser } = this.props;
+    await setUser(data);
+    history.push(`/`);
+  };
+
+  useQuery = () => {
+    return new URLSearchParams(window.location.search);
   };
 
   render() {
-    const { message } = this.props;
+    const { message, lang } = this.props;
+    const { loginPage } = textData;
+    const successSignup = this.useQuery().has('registrationSuccess')
+      ? loginPage.successSignUp[lang]
+      : false;
 
     return (
-      <div className={s.form}>
-        {message && <Alert variant="info">{message}</Alert>}
-        <h3 className={s.heading}>Log in to see your page</h3>
-        {process.env.BROWSER && (
-          <div>
-            <UserForm onSubmit={this.handleSubmit} submitText="Log in" />
-            <div className={s.links}>
-              <span className={s.notSignedUp}>Not signed up yet?</span>
-              <Button variant="link">
-                <Link to="/signup">Sign up</Link>
-              </Button>
-            </div>
+      <div className={s.wrapper}>
+        <div className={s.bannerWrap}>
+          <img
+            className={s.logo}
+            src={require('../../assets/logos/big-logo.png')}
+            alt="logo"
+          />
+        </div>
+        <div className={s.interfaceWrap}>
+          <div className={s.interface}>
+            {successSignup && <Alert variant="info">{successSignup}</Alert>}
+            {message && <Alert variant="info">{message}</Alert>}
+            <h3 className={s.heading}>{loginPage.title[lang]}</h3>
+            {process.env.BROWSER && (
+              <div className={s.formWrap}>
+                <UserForm
+                  onSubmit={this.handleSubmit}
+                  submitText={loginPage.submitButton[lang]}
+                />
+                <div className={s.links}>
+                  <Link to="/forgot-password" className={s.link}>
+                    {loginPage.forgotPassword[lang]}
+                  </Link>
+                  <Link to="/signup" className={s.link}>
+                    {loginPage.signup[lang]}
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     );
   }
@@ -53,7 +79,9 @@ class LoginPage extends React.Component {
 
 export default withStyles(bootstrap, s)(
   connect(
-    ({ user: { message } }) => ({ message }),
-    { setUser: login },
+    ({ user: { message }, menu: { lang } }) => ({ lang, message }),
+    {
+      setUser: login,
+    },
   )(LoginPage),
 );

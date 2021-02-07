@@ -11,25 +11,31 @@ const FieldInput = ({
   type,
   description,
   placeholder,
+  id,
+  as,
+  children,
   ...props
 }) => {
   const showError = touched && error;
 
   return (
-    <>
-      <div>
-        <FormControl
-          className={showError ? styles.InputError : ''}
-          name={name}
-          onBlur={onBlur}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          description={description}
-          props={props && ''}
-        />
-      </div>
+    <div className={styles.inputWrap}>
+      <FormControl
+        id={id}
+        className={showError ? styles.InputError : styles.fieldDefault}
+        name={name}
+        onBlur={onBlur}
+        type={type}
+        as={as}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        description={description}
+        props={props && ''}
+      >
+        {children}
+      </FormControl>
+
       <>
         {showError ? (
           <span className={styles.TextError}>{`${description} ${error}`}</span>
@@ -37,12 +43,15 @@ const FieldInput = ({
           <span className={styles.TextHidden}>message</span>
         )}
       </>
-    </>
+    </div>
   );
 };
 
 FieldInput.propTypes = {
+  as: PropTypes.string,
+  children: PropTypes.node,
   description: PropTypes.string.isRequired,
+  id: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,

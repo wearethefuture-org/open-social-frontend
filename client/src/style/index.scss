@@ -1,1 +1,182 @@
-@import './variables.scss';
+@import "./variables.scss";
+@import "emoji-mart/css/emoji-mart.css";
+
+* {
+  box-sizing: border-box;
+}
+
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+::selection {
+  background: var(--bg-default-select);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--bg-default-select);
+  text-shadow: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7a7b7e;
+  border-radius: 5px;
+}
+
+:global(.browserupgrade) {
+  margin: 0.2em 0;
+  background: var(--color-default-border);
+  color: #000;
+  padding: 0.2em 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #696a6b;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  color: var(--color-default-text);
+  font-family: var(--font-family-base);
+  line-height: 1.375;
+}
+
+body {
+  margin: 0;
+  font-size: 1.4rem;
+  font-family: var(--font-family-base);
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--color-default-border);
+  margin: 1em 0;
+  padding: 0;
+}
+
+a {
+  color: var(--color-default-link);
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Print styles
+ * Inlined to avoid the additional HTTP request:
+ * http://www.phpied.com/delay-loading-your-print-css/
+ * ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+
+    /* Black prints faster: http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  body {
+    font-size: 1.6rem;
+  }
+}

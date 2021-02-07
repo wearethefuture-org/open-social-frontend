@@ -55,7 +55,9 @@ export const readDirectory = (pattern, options) =>
 
 export const makeDirectory = name =>
   new Promise((resolve, reject) => {
-    mkdirp(name, error => (error ? reject(error) : resolve()));
+    fs.mkdir(name, { recursive: true }, error =>
+      error ? reject(error) : resolve(),
+    );
   });
 
 export const moveDirectory = async (source, target) => {

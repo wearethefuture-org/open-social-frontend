@@ -33,9 +33,9 @@ class Confirm extends Component {
     const text =
       confirmation === 0
         ? 'wait for confirmation'
-        : (confirmation === 1
+        : confirmation === 1
         ? 'Success Confirm'
-        : 'Not Confirmed');
+        : 'Not Confirmed';
     if (confirmation === 1 || confirmation === 2) this.redirectLogin();
     return (
       <div className={s.confirm}>

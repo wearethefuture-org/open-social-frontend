@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
+import { connect, Provider as ReduxProvider } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Provider as ReduxProvider } from 'react-redux';
+import LangData from '../utils/lib/languages';
 
 const ContextType = {
   // Universal HTTP client
@@ -44,6 +45,11 @@ class App extends React.PureComponent {
     context: PropTypes.shape(ContextType).isRequired,
   };
 
+  state = {
+    isClient: false,
+    isShow: false,
+  };
+
   static whyDidYouRender = true;
 
   static childContextTypes = ContextType;
@@ -53,11 +59,52 @@ class App extends React.PureComponent {
     return context;
   }
 
+  componentDidMount() {
+    const {
+      props: { dispatch },
+    } = this;
+
+    if (typeof window !== 'undefined') {
+      const isHaveLang = localStorage.getItem('chatLang');
+      if (isHaveLang) {
+        dispatch({
+          lang: isHaveLang,
+          type: 'SET_CURRENT_LANG',
+        });
+        this.setState({ isClient: true, isShow: true });
+      } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        const langList = LangData.langSelect;
+        if (langList.includes(userLang)) {
+          dispatch({
+            lang: userLang,
+            type: 'SET_CURRENT_LANG',
+          });
+          localStorage.setItem('chatLang', userLang);
+        } else {
+          dispatch({
+            lang: 'en',
+            type: 'SET_CURRENT_LANG',
+          });
+          localStorage.setItem('chatLang', 'en');
+        }
+        this.setState({ isClient: true, isShow: true });
+      }
+    } else {
+      this.setState({ isClient: false });
+    }
+  }
+
   render() {
     // NOTE: If you need to add or modify header, footer etc. of the app,
     // please do that inside the Layout component.
-    const { children } = this.props;
-    return React.Children.only(children);
+    const {
+      props: { children },
+      state: { isShow },
+    } = this;
+
+    return isShow && React.Children.only(children);
   }
 }
-export default memo(App);
+// export default memo(App);
+export default connect(null)(memo(App));

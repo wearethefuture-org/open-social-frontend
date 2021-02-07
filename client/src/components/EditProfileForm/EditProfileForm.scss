@@ -1,0 +1,28 @@
+.buttonSave {
+  display: inline-block;
+  float: right;
+  border: 1px solid #3f426b;
+  background-color: #3f426b;
+  border-radius: 5px;
+}
+
+.buttonSave > button {
+  min-width: 60px;
+}
+
+.buttonClose {
+  display: inline-block;
+  float: left;
+  border: 1px solid #3f426b;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: lightgrey;
+    color: white;
+    transition: 0.3s;
+  }
+}
+
+.textSave {
+  color: white;
+}

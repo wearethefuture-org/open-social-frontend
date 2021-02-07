@@ -1,0 +1,15 @@
+.messages {
+  padding: 2rem;
+  height: 450px;
+  overflow-y: scroll;
+}
+
+.firstMessage {
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 21px;
+  color: #0d1c2e;
+}

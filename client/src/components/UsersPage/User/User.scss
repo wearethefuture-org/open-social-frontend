@@ -1,0 +1,57 @@
+.Link {
+  display: flex;
+}
+
+.UsersAvatar {
+  object-fit: cover;
+  height: 82px;
+  width: 82px;
+  border-radius: 60px;
+}
+
+.UsersAvatarDefault {
+  object-fit: cover;
+  height: 82px;
+  width: 82px;
+  border-radius: 60px;
+}
+
+.UsersName {
+  margin-left: 30px;
+  align-self: center;
+}
+
+.userContainer {
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: 80% 20%;
+}
+
+.buttonAdd {
+  color: lightgrey;
+  background-color: #3f426b;
+  height: 35px;
+  min-width: 70px;
+  font-size: 12pt;
+  padding: 4px;
+  display: none;
+}
+
+.buttonAddWrite {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.buttonAdd:active {
+  background: lightgrey;
+  color: #000;
+}
+
+.line {
+  width: 100%;
+  background-color: #f4f4f4;
+  height: 1px;
+  margin: 10px 0;
+}

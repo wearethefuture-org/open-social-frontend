@@ -1,0 +1,631 @@
+{
+  "langSelect": ["uk", "en", "ru"],
+  "menuButtons": {
+    "profile": {
+      "label": {
+        "uk": "Профіль",
+        "en": "Profile",
+        "ru": "Профиль"
+      },
+      "path": ""
+    },
+    "about": {
+      "label": {
+        "uk": "Про нас",
+        "en": "About",
+        "ru": "О нас"
+      },
+      "path": "about"
+    },
+    "chats": {
+      "label": {
+        "uk": "Чати",
+        "en": "Chats",
+        "ru": "Чаты"
+      },
+      "path": "chats"
+    },
+    "users": {
+      "label": {
+        "uk": "Користувачі",
+        "en": "Users",
+        "ru": "Пользователи"
+      },
+      "path": "users"
+    },
+    "login": {
+      "label": {
+        "uk": "Вхід",
+        "en": "Login",
+        "ru": "Вход"
+      },
+      "path": "login"
+    },
+    "signUp": {
+      "label": {
+        "uk": "Реєстрація",
+        "en": "SignUp",
+        "ru": "Регистрация"
+      },
+      "path": "singup"
+    },
+    "signOut": {
+      "label": {
+        "uk": "Вихід",
+        "en": "Sign out",
+        "ru": "Выход"
+      },
+      "path": "signout"
+    },
+    "MyProfile": {
+      "label": {
+        "uk": "Мій профіль",
+        "en": "My profile",
+        "ru": "Мой профиль"
+      },
+      "path": "/"
+    },
+    "analytics": {
+      "label": {
+        "uk": "Аналітика",
+        "en": "Analytics",
+        "ru": "Аналитика"
+      },
+      "path": "analytics"
+    }
+  },
+
+  "general": {
+    "searchPlaceholder": {
+      "uk": "Пошук...",
+      "en": "Search…",
+      "ru": "Поиск…"
+    },
+    "loadingPlaceholder": {
+      "uk": "Завантаження...",
+      "en": "Loading…",
+      "ru": "Загрузка…"
+    }
+  },
+
+  "loginPage": {
+    "title": {
+      "uk": "Вхід",
+      "en": "Log in",
+      "ru": "Вход"
+    },
+    "signup": {
+      "uk": "Реєстрація",
+      "en": "Sign Up",
+      "ru": "Регистрация"
+    },
+    "isNotAutorized": {
+      "uk": "Ще не зареєструвалися?",
+      "en": "Not signed up yet?",
+      "ru": "Еще не зарегистрировались?"
+    },
+    "inputs": {
+      "email": {
+        "label": {
+          "uk": "Електрона почта",
+          "en": "Email address",
+          "ru": "Електронная почта"
+        },
+        "placeholder": {
+          "uk": "введіть email",
+          "en": "enter email",
+          "ru": "введите email"
+        }
+      },
+      "password": {
+        "label": {
+          "uk": "Пароль",
+          "en": "Password",
+          "ru": "Пароль"
+        },
+        "placeholder": {
+          "uk": "введіть пароль",
+          "en": "enter password",
+          "ru": "введите пароль"
+        }
+      }
+    },
+    "passwordSuccessChange": {
+      "uk": "Пароль успішно змінено!",
+      "en": "Password success change",
+      "ru": "Пароль успешно изменен!"
+    },
+    "rememberUser": {
+      "uk": "Запам'ятати мене",
+      "en": "Remember me",
+      "ru": "Запомнить меня"
+    },
+    "forgotPassword": {
+      "uk": "Забули пароль?",
+      "en": "Forgot the password?",
+      "ru": "Забыли пароль?",
+      "email": {
+        "uk": "Введіть вашу електронну пошту",
+        "en": "Enter your E-mail",
+        "ru": "Введите вашу электронную почту?"
+      },
+      "password": {
+        "uk": "Введіть ваш новий пароль",
+        "en": "Enter your new password",
+        "ru": "Введите ваш новый пароль"
+      },
+      "send": {
+        "uk": "Відправити",
+        "en": "Send",
+        "ru": "Отправить"
+      }
+    },
+    "submitButton": {
+      "uk": "Вхід",
+      "en": "Go",
+      "ru": "Вход"
+    },
+    "successSignUp": {
+      "uk": "Дякуємо за реєстрацію! Ми відправимо вам повідомлення на вашу електронну пошту.",
+      "en": "Thanks for registration! We send you a message on your email.",
+      "ru": "Спасибо за регистрацию! Мы отправим вам сообщение на вашу электронную почту."
+    }
+  },
+  "signupPage": {
+    "title": {
+      "uk": "Реєстрація",
+      "en": "Registration",
+      "ru": "Регистрация"
+    },
+    "login": {
+      "uk": "Вхід",
+      "en": "Log in",
+      "ru": "Вход"
+    },
+    "isRegistred": {
+      "uk": "Вже зареєстровані?",
+      "en": "Already signed up?",
+      "ru": "Уже зарегистрировались?"
+    },
+    "inputs": {
+      "firstName": {
+        "label": {
+          "uk": "Ім'я",
+          "en": "First name",
+          "ru": "Имя"
+        },
+        "placeholder": {
+          "uk": "Ваше ім'я",
+          "en": "First name",
+          "ru": "Ваше имя"
+        }
+      },
+      "lastName": {
+        "label": {
+          "uk": "Прізвище",
+          "en": "Last name",
+          "ru": "Фамилия"
+        },
+        "placeholder": {
+          "uk": "Ваше прізвище",
+          "en": "Last name",
+          "ru": "Ваша фамилия"
+        }
+      },
+      "userName": {
+        "label": {
+          "uk": "Ім'я користувача",
+          "en": "User name",
+          "ru": "Имя пользователя"
+        },
+        "placeholder": {
+          "uk": "Ім'я користувача",
+          "en": "User name",
+          "ru": "Имя пользователя"
+        }
+      },
+      "email": {
+        "label": {
+          "uk": "Електрона почта",
+          "en": "Email address",
+          "ru": "Електронная почта"
+        },
+        "placeholder": {
+          "uk": "Введіть email",
+          "en": "Enter email",
+          "ru": "Введите email"
+        }
+      },
+      "birthdayDate": {
+        "label": {
+          "uk": "Дата народження",
+          "en": "Birthday date",
+          "ru": "Дата рождения"
+        },
+        "placeholder": {
+          "uk": "Дата народження",
+          "en": "Birthday date",
+          "ru": "Дата рождения"
+        }
+      },
+      "password": {
+        "label": {
+          "uk": "Пароль",
+          "en": "Password",
+          "ru": "Пароль"
+        },
+        "placeholder": {
+          "uk": "Введіть пароль",
+          "en": "Enter password",
+          "ru": "Введите пароль"
+        }
+      },
+      "confirmPassword": {
+        "label": {
+          "uk": "Повторіть пароль",
+          "en": "Confirm password",
+          "ru": "Повторите пароль"
+        },
+        "placeholder": {
+          "uk": "Повторіть пароль",
+          "en": "Confirm password",
+          "ru": "Повторите пароль"
+        }
+      }
+    },
+    "submitButton": {
+      "uk": "Реєстрація",
+      "en": "Registration",
+      "ru": "Регистрация"
+    }
+  },
+  "aboutPage": {
+    "title": {
+      "uk": "Про нас",
+      "en": "About us",
+      "ru": "О нас"
+    }
+  },
+  "chatsPage": {
+    "title": {
+      "uk": "Повідомлення",
+      "en": "Messages",
+      "ru": "Сообщения"
+    },
+    "dialog": {
+      "inputPlaceholder": {
+        "uk": "Введіть тут повідомлення",
+        "en": "Type a message here",
+        "ru": "Напишите здесь сообщение"
+      },
+      "emojiTitle": {
+        "uk": "Виберіть смайл…",
+        "en": "Pick your emoji…",
+        "ru": "Выберите смайл…"
+      },
+      "selectChatTopTitle": {
+        "uk": "Будь ласка, оберіть чат щоб відкрити переписку",
+        "en": "Please select a chat to start messaging",
+        "ru": "Пожалуйста, выберите чат чтобы открыть переписку"
+      },
+      "selectChatBottomTitle": {
+        "uk": "Оберіть чат",
+        "en": "Select a chat first",
+        "ru": "Выберите чат"
+      },
+      "searchPlaceholder": {
+        "uk": "Пошук в повідомленнях...",
+        "en": "Search in messages…",
+        "ru": "Поиск в сообщениях…"
+      },
+      "noMessageTitle": {
+        "uk": "Немає повідомлень, напишіть першим...",
+        "en": "No messages, type first one…",
+        "ru": "Нет сообщений, напишите первым…"
+      },
+      "noMoreDialogs": {
+        "uk": "Більше діалогів немає =(",
+        "en": "No more dialogs for you =(",
+        "ru": "Больше диалогов нет =("
+      },
+      "addDialog": {
+        "uk": "Написати...",
+        "en": "Write to...",
+        "ru": "Написать..."
+      }
+    }
+  },
+  "usersPage": {
+    "title": {
+      "uk": "Користувачі",
+      "en": "Users",
+      "ru": "Пользователи"
+    },
+    "addButton": {
+      "uk": "Додати",
+      "en": "Add",
+      "ru": "Добавить"
+    }
+  },
+  "profilePage": {
+    "ownChat": {
+      "title": {
+        "uk": "Створити свій новий чат",
+        "en": "Create new own chat",
+        "ru": "Создать свой новый чат"
+      },
+      "nameInput": {
+        "uk": "Введіть назву чату. Поле не має бути пустим",
+        "en": "Please enter chat name. Name cant be empty",
+        "ru": "Пожалуйста, введите название чата. Поле не может быть пустым"
+      },
+      "descriptionInput": {
+        "uk": "Додайте опис, якщо це потрібно ...",
+        "en": "Add some description if you need...",
+        "ru": "Добавьте описание, если это нужно ..."
+      },
+      "submitText": {
+        "uk": "Створити свій чат",
+        "en": "Create own chat",
+        "ru": "Создать свой чат"
+      }
+    },
+    "tabs": {
+      "about": {
+        "uk": "Про мене",
+        "en": "About me",
+        "ru": "Обо мне"
+      },
+      "additional": {
+        "uk": "Додатково",
+        "en": "Additional info",
+        "ru": "Дополнительно"
+      },
+      "credits": {
+        "uk": "Вплив",
+        "en": "Credits",
+        "ru": "Влияние"
+      },
+      "analytics": {
+        "uk": "Аналітика",
+        "en": "Analytics",
+        "ru": "Аналитика"
+      }
+    },
+    "aboutData": {
+      "username": {
+        "uk": "Ім'я користувача",
+        "en": "User name",
+        "ru": "Имя пользователя"
+      },
+      "email": {
+        "uk": "Ел. пошта",
+        "en": "Email",
+        "ru": "Эл. адрес"
+      },
+      "birthday": {
+        "uk": "Дата народження",
+        "en": "Birthday date",
+        "ru": "Дата рождения"
+      },
+      "private": {
+        "uk": "Цей профіль є приватним.",
+        "en": "This profile is private.",
+        "ru": "Это приватный профиль."
+      }
+    },
+    "analyticsData": {
+      "registrationDate": {
+        "uk": "Дата реєстрації",
+        "en": "Registration Date",
+        "ru": "Дата регистрации"
+      },
+      "сreatedСhats": {
+        "uk": "Створено чатів",
+        "en": "Created chats",
+        "ru": "Создано чатов"
+      },
+      "сreatedMessages": {
+        "uk": "Кількість повідомлень",
+        "en": "Number of messages",
+        "ru": "Количество сообщений"
+      }
+    },
+    "buttons": {
+      "connect": {
+        "uk": "Підключення",
+        "en": "Connect",
+        "ru": "Подключение"
+      },
+      "message": {
+        "uk": "Повідомлення",
+        "en": "Messages",
+        "ru": "Сообщения"
+      },
+      "review": {
+        "uk": "Переглянути",
+        "en": "Review",
+        "ru": "Обзор"
+      },
+      "chat": {
+        "uk": "Новий чат",
+        "en": "Own chat",
+        "ru": "Новый чат"
+      }
+    },
+    "activities": {
+      "followers": {
+        "uk": "Підписники",
+        "en": "Followers",
+        "ru": "Подписчики"
+      },
+      "chats": {
+        "uk": "Всіх чатів",
+        "en": "Active chats",
+        "ru": "Всех чатов"
+      }
+    }
+  },
+  "editProfilePage": {
+    "title": {
+      "uk": "Редагувати профіль",
+      "en": "Edit profile",
+      "ru": "Редактировать профиль"
+    },
+    "inputs": {
+      "firstName": {
+        "label": {
+          "uk": "Ім'я",
+          "en": "First name",
+          "ru": "Имя"
+        },
+        "placeholder": {
+          "uk": "Введіть своє нове ім’я",
+          "en": "Enter your new first name",
+          "ru": "Введите ваше новое имя"
+        }
+      },
+      "lastName": {
+        "label": {
+          "uk": "Прізвище",
+          "en": "Last name",
+          "ru": "Фамилия"
+        },
+        "placeholder": {
+          "uk": "Введіть своє нове прізвище",
+          "en": "Enter your new last name",
+          "ru": "Введите вашу новую фамилию"
+        }
+      },
+      "userName": {
+        "label": {
+          "uk": "Ім'я користувача",
+          "en": "User name",
+          "ru": "Имя пользователя"
+        },
+        "placeholder": {
+          "uk": "Введіть своє нове ім'я користувача",
+          "en": "Enter your new userName",
+          "ru": "Введите ваше новое имя пользователя"
+        }
+      },
+      "email": {
+        "label": {
+          "uk": "Електрона почта",
+          "en": "Email address",
+          "ru": "Електронная почта"
+        },
+        "placeholder": {
+          "uk": "Введіть нову електронну адресу",
+          "en": "Enter your new email",
+          "ru": "Введите ваш новый адрес электронной почты"
+        }
+      },
+      "submitButton": {
+        "uk": "Зберегти",
+        "en": "Save",
+        "ru": "Сохранить"
+      },
+      "cancelButton": {
+        "uk": "Скасувати",
+        "en": "Cancel",
+        "ru": "Отменить"
+      }
+    }
+  },
+  "analyticsPage": {
+    "filter": {
+      "title": {
+        "uk": "Вкажіть дату",
+        "en": "Specify the date",
+        "ru": "Укажите дату"
+      },
+      "selectName": {
+        "uk": "Назва:",
+        "en": "Name:",
+        "ru": "Название:"
+      },
+      "selectStep": {
+        "uk": "Крок:",
+        "en": "Step:",
+        "ru": "Шаг:"
+      },
+      "startDate": {
+        "uk": "Введіть дату:",
+        "en": "Enter start date:",
+        "ru": "Введите дату:"
+      },
+      "endDate": {
+        "uk": "Введіть дату:",
+        "en": "Enter end date:",
+        "ru": "Введите дату:"
+      }
+    },
+    "chart": {
+      "users": {
+        "name": {
+          "uk": "Зареєстровано користувачів",
+          "en": "Registered users",
+          "ru": "Зарегистрировано пользователей"
+        },
+        "total": {
+          "uk": "Всього користувачів",
+          "en": "Total users",
+          "ru": "Всего пользователей"
+        },
+        "select": {
+          "uk": "Зареєстровано користувачів",
+          "en": "Registered users",
+          "ru": "Зарегистрировано пользователей"
+        },
+        "selectDate": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        },
+        "tooltipOne": {
+          "uk": "Зареєстровано",
+          "en": "Registered",
+          "ru": "Зарегистрировано"
+        },
+        "tooltipSecond": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        }
+      },
+      "chats": {
+        "name": {
+          "uk": "Створено чатів",
+          "en": "Created chats",
+          "ru": "Создано чатов"
+        },
+        "total": {
+          "uk": "Всього створено",
+          "en": "Total chats",
+          "ru": "Всего создано"
+        },
+        "select": {
+          "uk": "Створено чатів",
+          "en": "Created chats",
+          "ru": "Создано чатов"
+        },
+        "selectDate": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        },
+        "tooltipOne": {
+          "uk": "Створено",
+          "en": "Created",
+          "ru": "Создано"
+        },
+        "tooltipSecond": {
+          "uk": "до",
+          "en": "to",
+          "ru": "к"
+        }
+      }
+    }
+  }
+}

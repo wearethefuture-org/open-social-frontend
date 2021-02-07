@@ -3,10 +3,10 @@
   "eslint.workingDirectories": [
     {
       "directory": "./client",
-      "changeProcessCWD": true
+      "changeProcessCWD": false
     }
   ],
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }

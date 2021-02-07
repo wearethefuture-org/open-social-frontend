@@ -1,13 +1,32 @@
 .blockUserAdmin {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .avatar {
-  height: 150px;
-  width: 150px;
+  width: 130px;
+  max-width: 90%;
+  height: 130px;
+  max-height: 68%;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.closeIcon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .closeIcon {
+    display: block;
+    align-self: flex-start;
+    font-size: 3rem;
+    margin-left: 2rem;
+  }
 }

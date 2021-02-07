@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import withStyles from 'isomorphic-style-loader/withStyles';
@@ -6,43 +7,49 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, InputGroup, Row, Col, Form } from 'react-bootstrap';
 import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
+import textData from '../../utils/lib/languages.json';
 
 const UserForm = ({ handleSubmit, submitText }) => {
+  const lang = useSelector(store => store.menu.lang);
+  const {
+    signupPage: { inputs },
+  } = textData;
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          First name:
+          {inputs.firstName.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <Field
             name="firstName"
             component={FieldInput}
             type="text"
-            placeholder="first name"
-            description="First name"
+            placeholder={inputs.firstName.placeholder[lang]}
+            description="first name"
             validate={VALIDATION_RULES.FIRST_NAME}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Last name:
+          {inputs.lastName.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <Field
             name="lastName"
             component={FieldInput}
             type="text"
-            placeholder="last name"
-            description="Last name"
+            placeholder={inputs.lastName.placeholder[lang]}
+            description="last name"
             validate={VALIDATION_RULES.LAST_NAME}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Username:
+          {inputs.userName.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <InputGroup>
@@ -53,8 +60,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
               name="userName"
               component={FieldInput}
               type="text"
-              placeholder="user name"
-              description="Username"
+              placeholder={inputs.userName.placeholder[lang]}
+              description="user name"
               required
               validate={VALIDATION_RULES.USERNAME}
             />
@@ -63,60 +70,60 @@ const UserForm = ({ handleSubmit, submitText }) => {
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Email
+          {inputs.email.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <Field
             name="email"
             component={FieldInput}
             type="email"
-            placeholder="Enter email"
-            description="Email"
+            placeholder={inputs.email.placeholder[lang]}
+            description="email"
             validate={VALIDATION_RULES.EMAIL}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Birth Date
+          {inputs.birthdayDate.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <Field
             name="birthdayDate"
             component={FieldInput}
             type="date"
-            placeholder="Enter birthdayDate"
-            description="Birthday date"
+            placeholder={inputs.birthdayDate.placeholder[lang]}
+            description="birthday date"
             validate={VALIDATION_RULES.BIRTH_DAY}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Password
+          {inputs.password.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <Field
             name="password"
             component={FieldInput}
             type="password"
-            placeholder="Enter password"
-            description="Password"
+            placeholder={inputs.password.placeholder[lang]}
+            description="password"
             validate={VALIDATION_RULES.PASSWORD}
           />
         </Col>
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Confirm
+          {inputs.confirmPassword.label[lang]}
         </Form.Label>
         <Col sm={8}>
           <Field
             name="Confirm password"
             component={FieldInput}
             type="password"
-            placeholder="Confirm password"
-            description="Confirm password"
+            placeholder={inputs.confirmPassword.placeholder[lang]}
+            description="confirm password"
             validate={VALIDATION_RULES.CONFIRM_PASSWORD}
           />
         </Col>

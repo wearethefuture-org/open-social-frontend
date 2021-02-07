@@ -1,0 +1,49 @@
+@import '../../style/variables.scss';
+@import '../../style/index.scss';
+
+.header {
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 100vw;
+  height: 6rem;
+  padding: 0 3rem;
+  background-color: var(--color-header-background);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    height: 4rem;
+  }
+
+  h2 {
+    font-size: var(--logo-size);
+    color: var(--color-header-text);
+  }
+}
+
+.menu {
+  min-width: 12rem;
+  height: 100%;
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    img {
+      height: 2.5rem;
+    }
+  }
+}

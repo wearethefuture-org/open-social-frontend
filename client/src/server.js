@@ -106,6 +106,7 @@ app.get('*', async (request, response, next) => {
 
     const scripts = new Set();
     const addChunk = chunk => {
+      console.log(chunk)
       if (chunks[chunk]) {
         chunks[chunk].forEach(asset => scripts.add(asset));
       } else if (__DEV__) {

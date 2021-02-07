@@ -1,14 +1,21 @@
 .SearchDialogs {
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 10px;
+  margin: 0 20px 0 20px;
 }
 
 .SearchInputDialog {
-  border: 2px solid rgb(172, 172, 172);
-  border-radius: 10px;
-  height: 30px;
-  outline: none;
+	height: 28px;
+	outline: none;
+	padding: 6px 7px;
+  flex-basis: 90%;
+}
+
+.SearchIcon {
+  margin-left: 5px;
+  opacity: 0.6;
 }

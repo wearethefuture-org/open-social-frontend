@@ -6,8 +6,11 @@ import confirm from './confirm';
 import userChats from './chats';
 import userAuth from './user-auth';
 import userProfile from './profile';
+import users from './users';
+import analytics from './analytics';
 
 export default combineReducers({
+  analytics,
   confirm,
   form: formReducer,
   menu,
@@ -15,4 +18,5 @@ export default combineReducers({
   userAuth,
   userChats,
   userProfile,
+  users,
 });

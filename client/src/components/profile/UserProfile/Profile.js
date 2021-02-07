@@ -1,63 +1,79 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+// eslint-disable-next-line no-unused-vars
+import { faCaretDown, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import { Row, Col, Card, Container } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// eslint-disable-next-line css-modules/no-unused-class
 import styles from './Profile.scss';
-import stylesButton from './ProfileButton.scss';
+// eslint-disable-next-line css-modules/no-unused-class
+import stylesButton from './ProfileButton/ProfileButton.scss';
+// eslint-disable-next-line no-unused-vars
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
+import OwnChatButton from './OwnChat/OwnChat';
+import apiClient from '../../../utils/axios-with-auth';
+import defaultUserPhoto from '../../../assets/defaultUserPhoto.jpg';
+import textData from '../../../utils/lib/languages.json';
+import history from '../../../history';
 
 class Profile extends Component {
-  state = {
-    isDefaultPhotoDisplayed: true,
-    isPhotoLoaded: false,
-    photo: '',
+  static propTypes = {
+    avatar: PropTypes.shape({
+      avatar: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    }).isRequired,
+    id: PropTypes.shape({
+      id: PropTypes.number,
+    }).isRequired,
+    lang: PropTypes.string.isRequired,
   };
 
-  changeProfilePhotoHandler = () => {
-    this.setState(previousState => ({
-      isDisplayed: !previousState.isDisplayed,
-    }));
-  };
+  getUserAvatar() {
+    // eslint-disable-next-line react/destructuring-assignment
+    const { avatar } = this.props.avatar;
+    if (avatar === null) {
+      return defaultUserPhoto;
+    }
+    return avatar.url;
+  }
 
   loadPhoto = event => {
-    const fileReader = new FileReader();
     const photo = event.target.files[0];
-    fileReader.readAsDataURL(photo);
-    fileReader.addEventListener('load', () => {
-      this.setState(previousState => ({
-        isDefaultPhotoDisplayed: false,
-        isDisplayed: !previousState.isDisplayed,
-        isPhotoLoaded: !previousState.isPhotoLoaded,
-        photo: fileReader.result,
-      }));
-    });
+    apiClient.saveUserProfilePhoto(photo);
+    history.push(`/`);
   };
 
   render() {
-    const { isDefaultPhotoDisplayed, photo } = this.state;
+    const {
+      id: { id },
+      lang,
+    } = this.props;
+
+    const { profilePage } = textData;
     return (
       <Container className={styles.UserProfile}>
         <Card className={styles.ProfileCard}>
           <Row>
             <Col lg={5} md={5} sm={12}>
               <ProfilePhoto
-                isDefaultPhotoDisplayed={isDefaultPhotoDisplayed}
-                imgSource={photo}
-                changeProfilePhotoHandler={this.changeProfilePhotoHandler}
+                imgSource={this.getUserAvatar()}
                 loadPhoto={this.loadPhoto}
               />
               <div>
-                <ProfileButton
+                {/*     <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Connect"
+                  name={profilePage.buttons.connect[lang]}
                 />
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Message"
+                  name={profilePage.buttons.message[lang]}
                   iconLeft={
                     <FontAwesomeIcon
                       className={stylesButton.Icon}
@@ -67,14 +83,17 @@ class Profile extends Component {
                 />
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Review"
+                  name={profilePage.buttons.review[lang]}
                   iconRight={
                     <FontAwesomeIcon
                       className={stylesButton.Icon}
                       icon={faCaretDown}
                     />
                   }
-                />
+                /> */}
+                {id === apiClient.userId() && (
+                  <OwnChatButton nameButton={profilePage.buttons.chat[lang]} />
+                )}
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
@@ -83,7 +102,7 @@ class Profile extends Component {
           </Row>
         </Card>
 
-        <Container className={styles.FollowersContainer}>
+        {/*      <Container className={styles.FollowersContainer}>
           <Card className={styles.CardBody}>
             <Row className={styles.RowContainer}>
               <Col lg={4} md={4} sm={12}>
@@ -91,18 +110,18 @@ class Profile extends Component {
                   <Row className={styles.FollowersRow}>
                     <Col className={styles.Followers}>
                       <h3>203</h3>
-                      <p>Followers</p>
+                      <p>{profilePage.activities.followers[lang]}</p>
                     </Col>
                     <Col className={styles.Followers}>
                       <h3>5</h3>
-                      <p>Active chats</p>
+                      <p>{profilePage.activities.chats[lang]}</p>
                     </Col>
                   </Row>
                 </Card>
               </Col>
             </Row>
           </Card>
-        </Container>
+        </Container> */}
       </Container>
     );
   }
@@ -110,4 +129,10 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default withStyles(styles, stylesButton)(React.memo(Profile));
+export default connect(
+  ({ userProfile: avatar, userProfile: id, menu: { lang } }) => ({
+    avatar,
+    id,
+    lang,
+  }),
+)(withStyles(styles, stylesButton)(React.memo(Profile)));

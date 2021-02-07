@@ -1,14 +1,23 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import reactStyle from 'react-tabs/style/react-tabs.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCog } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBell,
+  faCog,
+  faUserEdit,
+  faChartBar,
+} from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import styles from './TabsComponent.scss';
+import Link from '../../../Link';
+import apiClient from '../../../../utils/axios-with-auth';
+import textData from '../../../../utils/lib/languages.json';
+import ProfilePrivate from '../ProfilePrivate/ProfilePrivate';
 
 const TabsComponent = ({
   firstName,
@@ -16,100 +25,151 @@ const TabsComponent = ({
   userName,
   email,
   birthdayDate,
-  role,
+  id,
+  privateUser,
+  createdAt,
+  countChats,
+  countMessages,
 }) => {
+  const lang = useSelector(store => store.menu.lang);
+  // if id != our id AND privateUser on this user === true return false else true
+  const publicStatus = !privateUser || id === apiClient.userId();
+  const {
+    profilePage: { tabs, aboutData, analyticsData },
+  } = textData;
   const dataObject = {
-    userInformation: [
+    analytics: [
       {
-        column: 'Description',
-        value:
-          ' Many people think that Lorem Ipsum is a ' +
-          'pseudo-Latin set of words taken from the ceiling, but this is not entirely true. ' +
-          'Its roots go back to one fragment of classical latin 45 years BC, that' +
-          'is, more than two millennia ago.',
+        column: `${analyticsData.registrationDate[lang]}`,
+        value: `${moment(createdAt).format('MM-DD-YYYY')}`,
       },
-      { column: 'Username', value: `${userName}` },
-      { column: 'Email', value: `${email}` },
+      { column: `${analyticsData.сreatedСhats[lang]}`, value: `${countChats}` },
       {
-        column: 'Birthday date',
+        column: `${analyticsData.сreatedMessages[lang]}`,
+        value: `${countMessages}`,
+      },
+    ],
+    userInformation: [
+      { column: `${aboutData.username[lang]}`, value: `${userName}` },
+      { column: `${aboutData.email[lang]}`, value: `${email}` },
+      {
+        column: `${aboutData.birthday[lang]}`,
         value: `${moment(birthdayDate).format('MM-DD-YYYY')}`,
       },
     ],
   };
 
-  return (
-    <>
-      <Tabs className={styles.TabsWrapper}>
-        <TabList>
-          <div>
-            <Tab id="aboutMe">About me</Tab>
-            <Tab id="additionalInfo">Additional info</Tab>
-            <Tab id="credits">Credits</Tab>
-            <div className={styles.IconsWrapper}>
-              {role === 'user' ? (
-                <>
-                  <span className={styles.Bell}>
-                    <FontAwesomeIcon icon={faBell} />
-                  </span>
-                  <span className={styles.Cog}>
-                    <FontAwesomeIcon icon={faCog} />
-                  </span>
-                </>
-              ) : null}
+  const data = item => {
+    return (
+      <Container key={item.column}>
+        <div className={styles.TabsItemRow}>
+          <div className={styles.TabsItemCol}>{item.column}:</div>
+          <div className={styles.TabsItemValue}>{item.value}</div>
+        </div>
+      </Container>
+    );
+  };
+
+  if (publicStatus) {
+    return (
+      <>
+        <Tabs className={styles.TabsWrapper}>
+          <TabList>
+            <div>
+              <Tab id="aboutMe">{tabs.about[lang]}</Tab>
+              <Tab id="additionalInfo" className={styles.hidden}>
+                {tabs.additional[lang]}
+              </Tab>
+              <Tab id="credits" className={styles.hidden}>
+                {tabs.credits[lang]}
+              </Tab>
+              <Tab id="analytics">{tabs.analytics[lang]}</Tab>
+              <div className={styles.IconsWrapper}>
+                {id === apiClient.userId() && (
+                  <>
+                    <span className={styles.Edit}>
+                      <Link to="/edit-profile">
+                        <FontAwesomeIcon icon={faUserEdit} />
+                      </Link>
+                    </span>
+                    <span className={(styles.Bell, styles.hidden)}>
+                      <FontAwesomeIcon icon={faBell} />
+                    </span>
+                    <span className={(styles.Cog, styles.hidden)}>
+                      <FontAwesomeIcon icon={faCog} />
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        </TabList>
-        <TabPanel className={styles.TabPanel}>
-          <h4>{` ${firstName} ${lastName}`}</h4>
-          {dataObject.userInformation.map(item => {
-            return (
-              <Container key={item.column}>
-                <Row className={styles.TabsItemRow}>
-                  <Col lg={3} md={3} sm={12} className={styles.TabsItemCol}>
-                    {item.column}:
-                  </Col>
-                  <Col lg={9} md={9} sm={12}>
-                    {item.value}
-                  </Col>
-                </Row>
-              </Container>
-            );
-          })}
-        </TabPanel>
-        <TabPanel className={styles.TabPanel}>
-          <h4>Additional info</h4>
-        </TabPanel>
-        <TabPanel className={styles.TabPanel}>
-          <h4>Credits</h4>
-        </TabPanel>
-      </Tabs>
-    </>
-  );
+          </TabList>
+          <TabPanel className={styles.TabPanel}>
+            <h4>{` ${firstName} ${lastName}`}</h4>
+            {dataObject.userInformation.map(item => {
+              return data(item);
+            })}
+          </TabPanel>
+          <TabPanel className={styles.TabPanel}>
+            <h4>Additional info</h4>
+          </TabPanel>
+          <TabPanel className={styles.TabPanel}>
+            <h4>Credits</h4>
+          </TabPanel>
+          <TabPanel className={styles.TabPanel}>
+            {dataObject.analytics.map(item => {
+              return data(item);
+            })}
+          </TabPanel>
+        </Tabs>
+      </>
+    );
+  }
+  return <ProfilePrivate />;
 };
 
 TabsComponent.defaultProps = {
   birthdayDate: null,
+  countChats: null,
+  countMessages: null,
 };
 
 TabsComponent.propTypes = {
   birthdayDate: PropTypes.string,
+  countChats: PropTypes.number,
+  countMessages: PropTypes.number,
+  createdAt: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   lastName: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
+  privateUser: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
 };
 
 TabsComponent.whyDidYouRender = true;
 export default connect(
   ({
-    userProfile: { firstName, lastName, userName, email, birthdayDate, role },
+    userProfile: {
+      firstName,
+      lastName,
+      userName,
+      email,
+      birthdayDate,
+      id,
+      privateUser,
+      createdAt,
+      analytics: { countChats, countMessages },
+    },
   }) => ({
     birthdayDate,
+    countChats,
+    countMessages,
+    createdAt,
     email,
     firstName,
+    id,
     lastName,
-    role,
+    privateUser,
     userName,
   }),
 )(withStyles(styles, reactStyle)(React.memo(TabsComponent)));

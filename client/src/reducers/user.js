@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_MESSAGE:
-      return { message: action.message };
+      return { ...state, message: action.message };
     default:
       return state;
   }
