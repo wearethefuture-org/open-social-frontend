@@ -35,7 +35,7 @@
     "isomorphic-style-loader": "~5.1.0",
     "jwt-decode": "^2.2.0",
     "lodash": "~4.17.19",
-    "moment": "~2.24.0",
+    "moment": "~2.29.4",
     "node-fetch": "~2.6.1",
     "node-sass": "^4.13.0",
     "normalize.css": "~8.0.1",
