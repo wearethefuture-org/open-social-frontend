@@ -28,7 +28,7 @@
     "classnames": "~2.2.6",
     "cookie-parser": "~1.4.4",
     "core-js": "~3.2.1",
-    "express": "~4.17.1",
+    "express": "~4.17.3",
     "formik": "^2.1.4",
     "history": "~4.7.0",
     "isomorphic-cookie": "^1.2.4",
